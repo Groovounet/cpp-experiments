@@ -5,7 +5,7 @@
 #include <ctime>
 #include <algorithm>
 
-std::size_t const COUNT(1000000);
+std::size_t const COUNT(100000000);
 
 struct DrawElementsIndirectCommand
 {
@@ -97,28 +97,22 @@ void test_sorting_elements_SoA()
 	// Packing the draws
 	std::clock_t TimeStart = std::clock();
 
-	std::vector<DrawElementsIndirectCommand> Copy(COUNT);
 	std::size_t j = 0;
 	{
-		Copy[0].primitiveCount = Data[0].primitiveCount;
-		Copy[0].instanceCount = Data[0].instanceCount;
-		Copy[0].firstIndex = Data[0].firstIndex;
-		Copy[0].baseVertex = Data[0].baseVertex;
-		Copy[0].baseInstance = Data[0].baseInstance;
 		for(std::size_t i = 1; i < Data.size(); ++i)
 		{
-			if(Copy[j].firstIndex + Copy[j].primitiveCount == Data[i].firstIndex)
+			if(Data[j].firstIndex + Data[j].primitiveCount == Data[i].firstIndex)
 			{
-				Copy[j].primitiveCount += Data[i].primitiveCount;
+				Data[j].primitiveCount += Data[i].primitiveCount;
 			}
 			else
 			{
 				++j;
-				Copy[j].primitiveCount = Data[i].primitiveCount;
-				Copy[j].instanceCount = Data[i].instanceCount;
-				Copy[j].firstIndex = Data[i].firstIndex;
-				Copy[j].baseVertex = Data[i].baseVertex;
-				Copy[j].baseInstance = Data[i].baseInstance;
+				Data[j].primitiveCount = Data[i].primitiveCount;
+				Data[j].instanceCount = Data[i].instanceCount;
+				Data[j].firstIndex = Data[i].firstIndex;
+				Data[j].baseVertex = Data[i].baseVertex;
+				Data[j].baseInstance = Data[i].baseInstance;
 			}
 		}
 
@@ -132,8 +126,8 @@ void test_sorting_elements_SoA()
 
 		//std::vector<DrawElementsIndirectCommand> Result(j + 1);
 		//memcpy(&Result[0], &Data[0], Result.size() * sizeof(DrawElementsIndirectCommand));
-		Copy.resize(j + 1);
-		Copy.shrink_to_fit();
+		Data.resize(j + 1);
+		Data.shrink_to_fit();
 
 		std::clock_t TimeEnd = std::clock();
 
@@ -191,22 +185,19 @@ void test_sorting_elements_SoA_cache()
 	// Packing the draws
 	std::clock_t TimeStart = std::clock();
 
-	std::vector<DrawElementsIndirectCommandCache> Copy(COUNT);
 	std::size_t j = 0;
 	{
-		Copy[0].primitiveCount = Data[0].primitiveCount;
-		Copy[0].firstIndex = Data[0].firstIndex;
 		for(std::size_t i = 1; i < Data.size(); ++i)
 		{
-			if(Copy[j].firstIndex + Copy[j].primitiveCount == Data[i].firstIndex)
+			if(Data[j].firstIndex + Data[j].primitiveCount == Data[i].firstIndex)
 			{
-				Copy[j].primitiveCount += Data[i].primitiveCount;
+				Data[j].primitiveCount += Data[i].primitiveCount;
 			}
 			else
 			{
 				++j;
-				Copy[j].primitiveCount = Data[i].primitiveCount;
-				Copy[j].firstIndex = Data[i].firstIndex;
+				Data[j].primitiveCount = Data[i].primitiveCount;
+				Data[j].firstIndex = Data[i].firstIndex;
 			}
 		}
 
@@ -220,8 +211,8 @@ void test_sorting_elements_SoA_cache()
 
 		//std::vector<DrawElementsIndirectCommand> Result(j + 1);
 		//memcpy(&Result[0], &Data[0], Result.size() * sizeof(DrawElementsIndirectCommand));
-		Copy.resize(j + 1);
-		Copy.shrink_to_fit();
+		Data.resize(j + 1);
+		Data.shrink_to_fit();
 
 		std::clock_t TimeEnd = std::clock();
 
