@@ -1,6 +1,3 @@
-#ifndef TEST_OVERLOAD_RETURN_PARAM_INCLUDED
-#define TEST_OVERLOAD_RETURN_PARAM_INCLUDED
+#pragma once
 
 void test_overload_return_param();
-
-#endif//TEST_OVERLOAD_RETURN_PARAM_INCLUDED

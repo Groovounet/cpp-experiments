@@ -1,6 +1,4 @@
-#ifndef TEST_TEMPLATE_TEMPLATE_INCLUDED
-#define TEST_TEMPLATE_TEMPLATE_INCLUDED
+#pragma once
 
 void test_template_template();
 
-#endif//TEST_TEMPLATE_TEMPLATE_INCLUDED

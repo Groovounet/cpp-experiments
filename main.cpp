@@ -1,3 +1,4 @@
+#include "test_sorting.hpp"
 #include "test_template_template.hpp"
 #include "test_function_template_parameter.hpp"
 #include "test_overload_return_param.hpp"
@@ -5,6 +6,8 @@
 
 int main()
 {
+	test_sorting();
+
 	test_template_template();
 	test_function_template_parameter();
 	test_overload_return_param();
