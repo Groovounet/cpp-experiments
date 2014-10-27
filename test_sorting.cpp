@@ -118,7 +118,7 @@ void test_sorting_elements_SoA()
 
 		std::clock_t TimeEnd = std::clock();
 
-		printf("Repack - pack: %d ms\n", (TimeEnd - TimeStart) * 1000 /  CLOCKS_PER_SEC);
+		printf("Repack - pack(%d): %d ms\n", j, (TimeEnd - TimeStart) * 1000 /  CLOCKS_PER_SEC);
 	}
 
 	{
@@ -203,7 +203,7 @@ void test_sorting_elements_SoA_cache()
 
 		std::clock_t TimeEnd = std::clock();
 
-		printf("Cached - pack: %d ms\n", (TimeEnd - TimeStart) * 1000 /  CLOCKS_PER_SEC);
+		printf("Cached - pack(%d): %d ms\n", j, (TimeEnd - TimeStart) * 1000 /  CLOCKS_PER_SEC);
 	}
 
 	{
