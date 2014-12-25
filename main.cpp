@@ -2,10 +2,13 @@
 #include "test_template_template.hpp"
 #include "test_function_template_parameter.hpp"
 #include "test_overload_return_param.hpp"
+#include "test_translation_table.hpp"
 #include "test_c_wrapper.hpp"
 
 int main()
 {
+	test_translation_table();
+
 	test_sorting();
 
 	test_template_template();
