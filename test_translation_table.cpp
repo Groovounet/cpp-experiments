@@ -947,80 +947,74 @@ namespace table
 			return ENUM100_OUT_J9;
 		}
 	}
-
-	template <typename ENUM_TYPE, int ENUM_COUNT>
-	std::vector<ENUM_TYPE> generateLinearData(std::size_t const Count)
-	{
-		std::vector<ENUM_TYPE> Data(Count);
-		for(std::size_t i = 0; i < Count; ++i)
-			Data[i] = static_cast<ENUM_TYPE>(i % ENUM_COUNT);
-		return Data;
-	}
-
-	template <typename ENUM_TYPE, int ENUM_COUNT>
-	std::vector<ENUM_TYPE> generateUniformData(std::size_t const Count)
-	{
-		std::size_t const SectionCount = Count / ENUM_COUNT;
-		std::vector<ENUM_TYPE> Data(Count);
-
-		for(std::size_t i = 0; i < Count; ++i)
-			Data[i] = static_cast<ENUM_TYPE>(i / SectionCount);
-
-		return Data;
-	}
-
-	template <typename ENUM_TYPE, int ENUM_COUNT>
-	std::vector<ENUM_TYPE> generateRandomData(std::size_t const Count)
-	{
-		std::vector<ENUM_TYPE> Data(Count);
-		for(std::size_t i = 0; i < Count; ++i)
-			Data[i] = static_cast<ENUM_TYPE>(std::rand() % ENUM_COUNT);
-		return Data;
-	}
-
-	template <typename OUT_TYPE, int INVALID_VALUE, typename ENUM_TYPE, int ENUM_COUNT>
-	std::clock_t exec(std::vector<ENUM_TYPE> const & Tests, OUT_TYPE (*Translate) (ENUM_TYPE))
-	{
-		int Error = 0;
-
-		std::clock_t TimeStart = std::clock();
-
-		for(std::size_t i = 0; i < Tests.size(); ++i)
-		{
-			OUT_TYPE Result = Translate(Tests[i]);
-			Error += Result != INVALID_VALUE ? 0 : 1;
-		}
-
-		std::clock_t TimeEnd = std::clock();
-
-		return Error ? 0 : TimeEnd - TimeStart;
-	}
 }//namespace table
 
-template <typename TRANSLATED_ENUM, int TRANSLATED_INVALID, typename INDEX_ENUM, int INDEX_COUNT>
-void test_translation_set(char const * Title, std::size_t Count)
+template <typename INDEX_ENUM>
+std::vector<INDEX_ENUM> generate_linear_data(std::size_t TotalCount, std::size_t IndexCount)
 {
-	std::vector<INDEX_ENUM> const UniformData(table::generateUniformData<INDEX_ENUM, INDEX_COUNT>(Count));
-	std::vector<INDEX_ENUM> const LinearData(table::generateLinearData<INDEX_ENUM, INDEX_COUNT>(Count));
-	std::vector<INDEX_ENUM> const RandomData(table::generateRandomData<INDEX_ENUM, INDEX_COUNT>(Count));
+	std::vector<INDEX_ENUM> Data(TotalCount);
+	for(std::size_t i = 0; i < TotalCount; ++i)
+		Data[i] = static_cast<INDEX_ENUM>(i % IndexCount);
+	return Data;
+}
+
+template <typename INDEX_ENUM>
+std::vector<INDEX_ENUM> generate_uniform_data(std::size_t TotalCount, std::size_t IndexCount)
+{
+	std::size_t const SectionCount = TotalCount / IndexCount;
+	std::vector<INDEX_ENUM> Data(TotalCount);
+
+	for(std::size_t i = 0; i < TotalCount; ++i)
+		Data[i] = static_cast<INDEX_ENUM>(i / SectionCount);
+
+	return Data;
+}
+
+template <typename INDEX_ENUM>
+std::vector<INDEX_ENUM> generate_random_data(std::size_t TotalCount, std::size_t IndexCount)
+{
+	std::vector<INDEX_ENUM> Data(TotalCount);
+	for(std::size_t i = 0; i < TotalCount; ++i)
+		Data[i] = static_cast<INDEX_ENUM>(std::rand() % IndexCount);
+	return Data;
+}
+
+template <typename INDEX_ENUM, typename TRANSLATED_ENUM, int TRANSLATED_INVALID>
+std::clock_t exec(std::vector<INDEX_ENUM> const & Tests, TRANSLATED_ENUM (*Translate) (INDEX_ENUM))
+{
+	int Error = 0;
+
+	std::clock_t TimeStart = std::clock();
+
+	for(std::size_t i = 0; i < Tests.size(); ++i)
+	{
+		TRANSLATED_ENUM Result = Translate(Tests[i]);
+		Error += Result != TRANSLATED_INVALID ? 0 : 1;
+	}
+
+	std::clock_t TimeEnd = std::clock();
+
+	return Error ? 0 : TimeEnd - TimeStart;
+}
+
+template <typename INDEX_ENUM, typename TRANSLATED_ENUM, int TRANSLATED_INVALID>
+void test_translation_set(char const * Title, std::size_t TotalCount, std::size_t IndexCount)
+{
+	std::vector<INDEX_ENUM> const UniformData(generate_uniform_data<INDEX_ENUM>(TotalCount, IndexCount));
+	std::vector<INDEX_ENUM> const LinearData(generate_linear_data<INDEX_ENUM>(TotalCount, IndexCount));
+	std::vector<INDEX_ENUM> const RandomData(generate_random_data<INDEX_ENUM>(TotalCount, IndexCount));
 
 
-	std::clock_t TimeTableUniform = table::exec<TRANSLATED_ENUM, TRANSLATED_INVALID, INDEX_ENUM, INDEX_COUNT>(
-		UniformData, table::translate_table);
-	std::clock_t TimeTableLinear = table::exec<TRANSLATED_ENUM, TRANSLATED_INVALID, INDEX_ENUM, INDEX_COUNT>(
-		LinearData, table::translate_table);
-	std::clock_t TimeTableRandom = table::exec<TRANSLATED_ENUM, TRANSLATED_INVALID, INDEX_ENUM, INDEX_COUNT>(
-		RandomData, table::translate_table);
+	std::clock_t TimeTableUniform = exec<INDEX_ENUM, TRANSLATED_ENUM, TRANSLATED_INVALID>(UniformData, table::translate_table);
+	std::clock_t TimeTableLinear = exec<INDEX_ENUM, TRANSLATED_ENUM, TRANSLATED_INVALID>(LinearData, table::translate_table);
+	std::clock_t TimeTableRandom = exec<INDEX_ENUM, TRANSLATED_ENUM, TRANSLATED_INVALID>(RandomData, table::translate_table);
 
 	std::printf("%s(table): uniform %lu clocks, linear %lu clocks, random %lu clocks\n", Title, TimeTableUniform, TimeTableLinear, TimeTableRandom);
 
 
-	std::clock_t TimeSwitchUniform = table::exec<TRANSLATED_ENUM, TRANSLATED_INVALID, INDEX_ENUM, INDEX_COUNT>(
-		UniformData, table::translate_switch);
-	std::clock_t TimeSwitchLinear = table::exec<TRANSLATED_ENUM, TRANSLATED_INVALID, INDEX_ENUM, INDEX_COUNT>(
-		LinearData, table::translate_switch);
-	std::clock_t TimeSwitchRandom = table::exec<TRANSLATED_ENUM, TRANSLATED_INVALID, INDEX_ENUM, INDEX_COUNT>(
-		RandomData, table::translate_switch);
+	std::clock_t TimeSwitchUniform = exec<INDEX_ENUM, TRANSLATED_ENUM, TRANSLATED_INVALID>(UniformData, table::translate_switch);
+	std::clock_t TimeSwitchLinear = exec<INDEX_ENUM, TRANSLATED_ENUM, TRANSLATED_INVALID>(LinearData, table::translate_switch);
+	std::clock_t TimeSwitchRandom = exec<INDEX_ENUM, TRANSLATED_ENUM, TRANSLATED_INVALID>(RandomData, table::translate_switch);
 
 	std::printf("%s(switch): uniform %lu clocks, linear %lu clocks, random %lu clocks\n", Title, TimeSwitchUniform, TimeSwitchLinear, TimeSwitchRandom);
 }
@@ -1029,10 +1023,10 @@ void test_translation_table()
 {
 	std::size_t const Count = 10000000;
 
-	test_translation_set<table::enum5_out, table::ENUM5_OUT_INVALID, table::enum5, table::ENUM5_COUNT>("enum5", Count);
-	test_translation_set<table::enum10_out, table::ENUM10_OUT_INVALID, table::enum10, table::ENUM10_COUNT>("enum10", Count);
-	test_translation_set<table::enum32_out, table::ENUM32_OUT_INVALID, table::enum32, table::ENUM32_COUNT>("enum32", Count);
-	test_translation_set<table::enum100_out, table::ENUM100_OUT_INVALID, table::enum100, table::ENUM100_COUNT>("enum100", Count);
+	test_translation_set<table::enum5, table::enum5_out, table::ENUM5_OUT_INVALID>("enum5", Count, table::ENUM5_COUNT);
+	test_translation_set<table::enum10, table::enum10_out, table::ENUM10_OUT_INVALID>("enum10", Count, table::ENUM10_COUNT);
+	test_translation_set<table::enum32, table::enum32_out, table::ENUM32_OUT_INVALID>("enum32", Count, table::ENUM32_COUNT);
+	test_translation_set<table::enum100, table::enum100_out, table::ENUM100_OUT_INVALID>("enum100", Count, table::ENUM100_COUNT);
 
 	return;
 }
