@@ -99,7 +99,6 @@ namespace translation4
 	{
 		switch(Index)
 		{
-		default:
 		case INDEX_A: return TRANSLATED_A;
 		case INDEX_B: return TRANSLATED_B;
 		case INDEX_C: return TRANSLATED_C;
@@ -111,7 +110,6 @@ namespace translation4
 	{
 		switch(Value)
 		{
-		default:
 		case TRANSLATED_A: return INDEX_A;
 		case TRANSLATED_B: return INDEX_B;
 		case TRANSLATED_C: return INDEX_C;
