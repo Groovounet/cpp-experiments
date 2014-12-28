@@ -14,6 +14,7 @@
 		return Table[Index];
 	}
 
+// Apple Clang 6.0
 	.globl	__ZN12translation422static_table_translateENS_5indexE
 	.align	4, 0x90
 __ZN12translation422static_table_translateENS_5indexE: ## @_ZN12translation422static_table_translateENS_5indexE
@@ -34,7 +35,68 @@ Ltmp9:
 	retq
 	.cfi_endproc
 
+// Visual C++ 2013 - 'static const'
+?static_table_translate@translation4@@YA?AW4translated@1@W4index@1@@Z PROC ; translation4::static_table_translate
 
+; 51   : 		static const translated Table[] =
+; 52   : 		{
+; 53   : 			TRANSLATED_A,		// INDEX_A
+; 54   : 			TRANSLATED_B,		// INDEX_B
+; 55   : 			TRANSLATED_C,		// INDEX_C
+; 56   : 			TRANSLATED_D		// INDEX_D
+; 57   : 		};
+; 58   : 
+; 59   : 		static_assert(sizeof(Table) / sizeof(translated) == INDEX_COUNT, "The translation table needs to be updated.");
+; 60   : 		assert(Index < INDEX_COUNT);
+; 61   : 
+; 62   : 		return Table[Index];
+
+	movsxd	rax, ecx
+	lea	rcx, OFFSET FLAT:?Table@?1??static_table_translate@translation4@@YA?AW4translated@2@W4index@2@@Z@4QBW432@B
+	mov	eax, DWORD PTR [rcx+rax*4]
+
+; 63   : 	}
+
+// Visual C++ 2013 - 'const'
+?const_table_translate@translation4@@YA?AW4translated@1@W4index@1@@Z PROC ; translation4::const_table_translate
+
+; 34   : 	{
+
+$LN4:
+	sub	rsp, 40					; 00000028H
+	mov	rax, QWORD PTR __security_cookie
+	xor	rax, rsp
+	mov	QWORD PTR __$ArrayPad$[rsp], rax
+	movdqa	xmm0, XMMWORD PTR __xmm@00008aef00002c35000001c20000a0e7
+
+; 35   : 		const translated Table[] =
+; 36   : 		{
+; 37   : 			TRANSLATED_A,		// INDEX_A
+; 38   : 			TRANSLATED_B,		// INDEX_B
+; 39   : 			TRANSLATED_C,		// INDEX_C
+; 40   : 			TRANSLATED_D		// INDEX_D
+; 41   : 		};
+; 42   : 
+; 43   : 		static_assert(sizeof(Table) / sizeof(translated) == INDEX_COUNT, "The translation table needs to be updated.");
+; 44   : 		assert(Index < INDEX_COUNT);
+; 45   : 
+; 46   : 		return Table[Index];
+
+	movsxd	rax, ecx
+	movdqu	XMMWORD PTR Table$[rsp], xmm0
+	mov	eax, DWORD PTR Table$[rsp+rax*4]
+
+; 47   : 	}
+
+	mov	rcx, QWORD PTR __$ArrayPad$[rsp]
+	xor	rcx, rsp
+	call	__security_check_cookie
+	add	rsp, 40					; 00000028H
+	ret	0
+?const_table_translate@translation4@@YA?AW4translated@1@W4index@1@@Z ENDP ; translation4::const_table_translate
+
+	ret	0
+?static_table_translate@translation4@@YA?AW4translated@1@W4index@1@@Z ENDP ; translation4::static_table_translate
 
 	translated index_switch_translate(index Index)
 	{
@@ -76,7 +138,63 @@ LBB7_2:
 	retq
 	.cfi_endproc
 
-// Without 'default:''
+// Visual C++ 2013
+?index_switch_translate@translation4@@YA?AW4translated@1@W4index@1@@Z PROC ; translation4::index_switch_translate
+
+; 100  : 		switch(Index)
+
+	test	ecx, ecx
+	je	SHORT $LN4@index_swit
+	dec	ecx
+	je	SHORT $LN3@index_swit
+	dec	ecx
+	je	SHORT $LN2@index_swit
+	dec	ecx
+	jne	SHORT $LN5@index_swit
+
+; 105  : 		case INDEX_D: return TRANSLATED_D;
+
+	mov	eax, 35567				; 00008aefH
+
+; 106  : 		}
+; 107  : 	}
+
+	ret	0
+$LN2@index_swit:
+
+; 104  : 		case INDEX_C: return TRANSLATED_C;
+
+	mov	eax, 11317				; 00002c35H
+
+; 106  : 		}
+; 107  : 	}
+
+	ret	0
+$LN3@index_swit:
+
+; 103  : 		case INDEX_B: return TRANSLATED_B;
+
+	mov	eax, 450				; 000001c2H
+
+; 106  : 		}
+; 107  : 	}
+
+	ret	0
+$LN4@index_swit:
+
+; 101  : 		{
+; 102  : 		case INDEX_A: return TRANSLATED_A;
+
+	mov	eax, 41191				; 0000a0e7H
+$LN5@index_swit:
+
+; 106  : 		}
+; 107  : 	}
+
+	ret	0
+?index_switch_translate@translation4@@YA?AW4translated@1@W4index@1@@Z ENDP ; translation4::index_switch_translate
+
+// Clang - Without 'default:''
 	.globl	__ZN12translation422index_switch_translateENS_5indexE
 	.align	4, 0x90
 __ZN12translation422index_switch_translateENS_5indexE: ## @_ZN12translation422index_switch_translateENS_5indexE
@@ -114,6 +232,7 @@ LBB7_2:
 		}
 	}
 
+Apple Clang 6.0.0 
 	.globl	__ZN12translation422value_switch_translateENS_10translatedE
 	.align	4, 0x90
 __ZN12translation422value_switch_translateENS_10translatedE: ## @_ZN12translation422value_switch_translateENS_10translatedE
@@ -151,3 +270,59 @@ LBB8_6:
 	popq	%rbp
 	retq
 	.cfi_endproc
+
+Visual C++ 2013
+?value_switch_translate@translation4@@YA?AW4index@1@W4translated@1@@Z PROC ; translation4::value_switch_translate
+
+; 111  : 		switch(Value)
+
+	cmp	ecx, 450				; 000001c2H
+	je	SHORT $LN3@value_swit
+	cmp	ecx, 11317				; 00002c35H
+	je	SHORT $LN2@value_swit
+	cmp	ecx, 35567				; 00008aefH
+	je	SHORT $LN1@value_swit
+	cmp	ecx, 41191				; 0000a0e7H
+	jne	SHORT $LN5@value_swit
+
+; 112  : 		{
+; 113  : 		case TRANSLATED_A: return INDEX_A;
+
+	xor	eax, eax
+
+; 117  : 		}
+; 118  : 	}
+
+	ret	0
+$LN1@value_swit:
+
+; 116  : 		case TRANSLATED_D: return INDEX_D;
+
+	mov	eax, 3
+
+; 117  : 		}
+; 118  : 	}
+
+	ret	0
+$LN2@value_swit:
+
+; 115  : 		case TRANSLATED_C: return INDEX_C;
+
+	mov	eax, 2
+
+; 117  : 		}
+; 118  : 	}
+
+	ret	0
+$LN3@value_swit:
+
+; 114  : 		case TRANSLATED_B: return INDEX_B;
+
+	mov	eax, 1
+$LN5@value_swit:
+
+; 117  : 		}
+; 118  : 	}
+
+	ret	0
+?value_switch_translate@translation4@@YA?AW4index@1@W4translated@1@@Z ENDP ; translation4::value_switch_translates
