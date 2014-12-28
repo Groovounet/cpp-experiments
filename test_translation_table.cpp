@@ -1655,7 +1655,7 @@ namespace translation128
 		TRANSLATED_BA = 0xC1B2,
 		TRANSLATED_CA = 0xCCB5,
 		TRANSLATED_DA = 0xCAB0,
-		TRANSLATED_EA = 0xCBCFB1,
+		TRANSLATED_EA = 0xCBC1,
 		TRANSLATED_FA = 0xCABF,
 		TRANSLATED_GA = 0xCAB2,
 		TRANSLATED_HA = 0xC2BB,
@@ -2607,7 +2607,7 @@ std::clock_t exec(std::vector<INDEX_ENUM> const & Tests, TRANSLATED_ENUM (*Trans
 }
 
 template <typename INDEX_ENUM, typename TRANSLATED_ENUM>
-void test_translation_set(char const * Title, std::size_t IterationCount, std::size_t TotalCount, std::size_t IndexCount, TRANSLATED_ENUM (*Translate) (INDEX_ENUM))
+void test_translation_set(FILE* File, char const * Title, std::size_t IterationCount, std::size_t TotalCount, std::size_t IndexCount, TRANSLATED_ENUM (*Translate) (INDEX_ENUM))
 {
 	std::vector<INDEX_ENUM> const UniformData(generate_uniform_data<INDEX_ENUM>(TotalCount, IndexCount));
 	std::vector<INDEX_ENUM> const LinearData(generate_linear_data<INDEX_ENUM>(TotalCount, IndexCount));
@@ -2636,12 +2636,20 @@ void test_translation_set(char const * Title, std::size_t IterationCount, std::s
 		TimeTableUniform * 1000 / CLOCKS_PER_SEC,
 		TimeTableLinear * 1000 / CLOCKS_PER_SEC,
 		TimeTableRandom * 1000 /  CLOCKS_PER_SEC);
+
+	std::fprintf(
+		File,
+		"%s, %lu, %lu, %lu\n",
+		Title,
+		TimeTableUniform * 1000 / CLOCKS_PER_SEC,
+		TimeTableLinear * 1000 / CLOCKS_PER_SEC,
+		TimeTableRandom * 1000 /  CLOCKS_PER_SEC);
 }
 
 void test_translation_table()
 {
-	std::size_t const DuplicateCount = 16;
-	std::size_t const IterationCount = 8;
+	std::size_t const DuplicateCount = 3;
+	std::size_t const IterationCount = 5;
 	std::size_t const TotalCount = 50000000;
 
 	translation4::array_table_init();
@@ -2657,122 +2665,151 @@ void test_translation_table()
 	translation128::array_table_init();
 	translation128::dynamic_table_init();
 
+	FILE* File = fopen("results.csv", "a+");
+	assert(File != NULL);
+
 	for(std::size_t i = 0; i < DuplicateCount; ++i)
 	{
 		// 4 enum values
-		test_translation_set<translation4::index, translation4::translated>(
-			"const table    4", IterationCount, TotalCount, translation4::INDEX_COUNT, translation4::const_table_translate);
+		char const * Title4 = "4, uniform (ms), linear (ms), random (ms)\n";
+		std::printf(Title4);
+		std::fprintf(File, Title4);
 
 		test_translation_set<translation4::index, translation4::translated>(
-			"static table   4", IterationCount, TotalCount, translation4::INDEX_COUNT, translation4::static_table_translate);
+			File, "const table    ", IterationCount, TotalCount, translation4::INDEX_COUNT, translation4::const_table_translate);
 
 		test_translation_set<translation4::index, translation4::translated>(
-			"array table    4", IterationCount, TotalCount, translation4::INDEX_COUNT, translation4::array_table_translate);
+			File, "static table   ", IterationCount, TotalCount, translation4::INDEX_COUNT, translation4::static_table_translate);
 
 		test_translation_set<translation4::index, translation4::translated>(
-			"dynamic table  4", IterationCount, TotalCount, translation4::INDEX_COUNT, translation4::dynamic_table_translate);
+			File, "array table    ", IterationCount, TotalCount, translation4::INDEX_COUNT, translation4::array_table_translate);
 
 		test_translation_set<translation4::index, translation4::translated>(
-			"index switch   4", IterationCount, TotalCount, translation4::INDEX_COUNT, translation4::index_switch_translate);
+			File, "dynamic table  ", IterationCount, TotalCount, translation4::INDEX_COUNT, translation4::dynamic_table_translate);
+
+		test_translation_set<translation4::index, translation4::translated>(
+			File, "index switch   ", IterationCount, TotalCount, translation4::INDEX_COUNT, translation4::index_switch_translate);
 
 		test_translation_set<translation4::translated, translation4::index>(
-			"value switch   4", IterationCount, TotalCount, translation4::TRANSLATED_COUNT, translation4::value_switch_translate);
+			File, "value switch   ", IterationCount, TotalCount, translation4::TRANSLATED_COUNT, translation4::value_switch_translate);
 
 		// 8 enum values
-		test_translation_set<translation8::index, translation8::translated>(
-			"const table    8", IterationCount, TotalCount, translation8::INDEX_COUNT, translation8::const_table_translate);
+		char const * Title8 = "8, uniform (ms), linear (ms), random (ms)\n";
+		std::printf(Title8);
+		std::fprintf(File, Title8);
 
 		test_translation_set<translation8::index, translation8::translated>(
-			"static table   8", IterationCount, TotalCount, translation8::INDEX_COUNT, translation8::static_table_translate);
+			File, "const table    ", IterationCount, TotalCount, translation8::INDEX_COUNT, translation8::const_table_translate);
 
 		test_translation_set<translation8::index, translation8::translated>(
-			"array table    8", IterationCount, TotalCount, translation8::INDEX_COUNT, translation8::array_table_translate);
+			File, "static table   ", IterationCount, TotalCount, translation8::INDEX_COUNT, translation8::static_table_translate);
 
 		test_translation_set<translation8::index, translation8::translated>(
-			"dynamic table  8", IterationCount, TotalCount, translation8::INDEX_COUNT, translation8::dynamic_table_translate);
+			File, "array table    ", IterationCount, TotalCount, translation8::INDEX_COUNT, translation8::array_table_translate);
 
 		test_translation_set<translation8::index, translation8::translated>(
-			"index switch   8", IterationCount, TotalCount, translation8::INDEX_COUNT, translation8::index_switch_translate);
+			File, "dynamic table  ", IterationCount, TotalCount, translation8::INDEX_COUNT, translation8::dynamic_table_translate);
+
+		test_translation_set<translation8::index, translation8::translated>(
+			File, "index switch   ", IterationCount, TotalCount, translation8::INDEX_COUNT, translation8::index_switch_translate);
 
 		test_translation_set<translation8::translated, translation8::index>(
-			"value switch   8", IterationCount, TotalCount, translation8::TRANSLATED_COUNT, translation8::value_switch_translate);
+			File, "value switch   ", IterationCount, TotalCount, translation8::TRANSLATED_COUNT, translation8::value_switch_translate);
 
 		// 16 enum values
-		test_translation_set<translation16::index, translation16::translated>(
-			"const table   16", IterationCount, TotalCount, translation16::INDEX_COUNT, translation16::const_table_translate);
+		char const * Title16 = "16, uniform (ms), linear (ms), random (ms)\n";
+		std::printf(Title16);
+		std::fprintf(File, Title16);
 
 		test_translation_set<translation16::index, translation16::translated>(
-			"static table  16", IterationCount, TotalCount, translation16::INDEX_COUNT, translation16::static_table_translate);
+			File, "const table   ", IterationCount, TotalCount, translation16::INDEX_COUNT, translation16::const_table_translate);
 
 		test_translation_set<translation16::index, translation16::translated>(
-			"array table   16", IterationCount, TotalCount, translation16::INDEX_COUNT, translation16::array_table_translate);
+			File, "static table  ", IterationCount, TotalCount, translation16::INDEX_COUNT, translation16::static_table_translate);
 
 		test_translation_set<translation16::index, translation16::translated>(
-			"dynamic table 16", IterationCount, TotalCount, translation16::INDEX_COUNT, translation16::dynamic_table_translate);
+			File, "array table   ", IterationCount, TotalCount, translation16::INDEX_COUNT, translation16::array_table_translate);
 
 		test_translation_set<translation16::index, translation16::translated>(
-			"index switch  16", IterationCount, TotalCount, translation16::INDEX_COUNT, translation16::index_switch_translate);
+			File, "dynamic table ", IterationCount, TotalCount, translation16::INDEX_COUNT, translation16::dynamic_table_translate);
+
+		test_translation_set<translation16::index, translation16::translated>(
+			File, "index switch  ", IterationCount, TotalCount, translation16::INDEX_COUNT, translation16::index_switch_translate);
 
 		test_translation_set<translation16::translated, translation16::index>(
-			"value switch  16", IterationCount, TotalCount, translation16::TRANSLATED_COUNT, translation16::value_switch_translate);
+			File, "value switch  ", IterationCount, TotalCount, translation16::TRANSLATED_COUNT, translation16::value_switch_translate);
 
 		// 32 enum values
-		test_translation_set<translation32::index, translation32::translated>(
-			"const table   32", IterationCount, TotalCount, translation32::INDEX_COUNT, translation32::const_table_translate);
+		char const * Title32 = "32, uniform (ms), linear (ms), random (ms)\n";
+		std::printf(Title32);
+		std::fprintf(File, Title32);
 
 		test_translation_set<translation32::index, translation32::translated>(
-			"static table  32", IterationCount, TotalCount, translation32::INDEX_COUNT, translation32::static_table_translate);
+			File, "const table   ", IterationCount, TotalCount, translation32::INDEX_COUNT, translation32::const_table_translate);
 
 		test_translation_set<translation32::index, translation32::translated>(
-			"array table   32", IterationCount, TotalCount, translation32::INDEX_COUNT, translation32::array_table_translate);
+			File, "static table  ", IterationCount, TotalCount, translation32::INDEX_COUNT, translation32::static_table_translate);
 
 		test_translation_set<translation32::index, translation32::translated>(
-			"dynamic table 32", IterationCount, TotalCount, translation32::INDEX_COUNT, translation32::dynamic_table_translate);
+			File, "array table   ", IterationCount, TotalCount, translation32::INDEX_COUNT, translation32::array_table_translate);
 
 		test_translation_set<translation32::index, translation32::translated>(
-			"index switch  32", IterationCount, TotalCount, translation32::INDEX_COUNT, translation32::index_switch_translate);
+			File, "dynamic table ", IterationCount, TotalCount, translation32::INDEX_COUNT, translation32::dynamic_table_translate);
+
+		test_translation_set<translation32::index, translation32::translated>(
+			File, "index switch  ", IterationCount, TotalCount, translation32::INDEX_COUNT, translation32::index_switch_translate);
 
 		test_translation_set<translation32::translated, translation32::index>(
-			"value switch  32", IterationCount, TotalCount, translation32::TRANSLATED_COUNT, translation32::value_switch_translate);
+			File, "value switch  ", IterationCount, TotalCount, translation32::TRANSLATED_COUNT, translation32::value_switch_translate);
 
 		// 64 enum values
-		test_translation_set<translation64::index, translation64::translated>(
-			"const table   64", IterationCount, TotalCount, translation64::INDEX_COUNT, translation64::const_table_translate);
+		char const * Title64 = "64, uniform (ms), linear (ms), random (ms)\n";
+		std::printf(Title64);
+		std::fprintf(File, Title64);
 
 		test_translation_set<translation64::index, translation64::translated>(
-			"static table  64", IterationCount, TotalCount, translation64::INDEX_COUNT, translation64::static_table_translate);
+			File, "const table   ", IterationCount, TotalCount, translation64::INDEX_COUNT, translation64::const_table_translate);
 
 		test_translation_set<translation64::index, translation64::translated>(
-			"array table   64", IterationCount, TotalCount, translation64::INDEX_COUNT, translation64::array_table_translate);
+			File, "static table  ", IterationCount, TotalCount, translation64::INDEX_COUNT, translation64::static_table_translate);
 
 		test_translation_set<translation64::index, translation64::translated>(
-			"dynamic table 64", IterationCount, TotalCount, translation64::INDEX_COUNT, translation64::dynamic_table_translate);
+			File, "array table   ", IterationCount, TotalCount, translation64::INDEX_COUNT, translation64::array_table_translate);
 
 		test_translation_set<translation64::index, translation64::translated>(
-			"index switch  64", IterationCount, TotalCount, translation64::INDEX_COUNT, translation64::index_switch_translate);
+			File, "dynamic table ", IterationCount, TotalCount, translation64::INDEX_COUNT, translation64::dynamic_table_translate);
+
+		test_translation_set<translation64::index, translation64::translated>(
+			File, "index switch  ", IterationCount, TotalCount, translation64::INDEX_COUNT, translation64::index_switch_translate);
 
 		test_translation_set<translation64::translated, translation64::index>(
-			"value switch  64", IterationCount, TotalCount, translation64::TRANSLATED_COUNT, translation64::value_switch_translate);
+			File, "value switch  ", IterationCount, TotalCount, translation64::TRANSLATED_COUNT, translation64::value_switch_translate);
 
 		// 128 enum values
-		test_translation_set<translation128::index, translation128::translated>(
-			"const table   128", IterationCount, TotalCount, translation128::INDEX_COUNT, translation128::const_table_translate);
+		char const * Title128 = "128, uniform (ms), linear (ms), random (ms)\n";
+		std::printf(Title128);
+		std::fprintf(File, Title128);
 
 		test_translation_set<translation128::index, translation128::translated>(
-			"static table  128", IterationCount, TotalCount, translation128::INDEX_COUNT, translation128::static_table_translate);
+			File, "const table   ", IterationCount, TotalCount, translation128::INDEX_COUNT, translation128::const_table_translate);
 
 		test_translation_set<translation128::index, translation128::translated>(
-			"array table   128", IterationCount, TotalCount, translation128::INDEX_COUNT, translation128::array_table_translate);
+			File, "static table  ", IterationCount, TotalCount, translation128::INDEX_COUNT, translation128::static_table_translate);
 
 		test_translation_set<translation128::index, translation128::translated>(
-			"dynamic table 128", IterationCount, TotalCount, translation128::INDEX_COUNT, translation128::dynamic_table_translate);
+			File, "array table   ", IterationCount, TotalCount, translation128::INDEX_COUNT, translation128::array_table_translate);
 
 		test_translation_set<translation128::index, translation128::translated>(
-			"index switch  128", IterationCount, TotalCount, translation128::INDEX_COUNT, translation128::index_switch_translate);
+			File, "dynamic table ", IterationCount, TotalCount, translation128::INDEX_COUNT, translation128::dynamic_table_translate);
+
+		test_translation_set<translation128::index, translation128::translated>(
+			File, "index switch  ", IterationCount, TotalCount, translation128::INDEX_COUNT, translation128::index_switch_translate);
 
 		test_translation_set<translation128::translated, translation128::index>(
-			"value switch  128", IterationCount, TotalCount, translation128::TRANSLATED_COUNT, translation128::value_switch_translate);
+			File, "value switch  ", IterationCount, TotalCount, translation128::TRANSLATED_COUNT, translation128::value_switch_translate);
 	}
+
+	fclose(File);
 
 	return;
 }
