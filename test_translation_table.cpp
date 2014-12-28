@@ -252,7 +252,7 @@ namespace translation8
 
 	index value_switch_translate(translated Value)
 	{
-		assert(Value < VALUE_COUNT);
+		assert(Value < TRANSLATED_COUNT);
 
 		switch(Value)
 		{
@@ -426,9 +426,7 @@ namespace translation16
 		assert(g_Table.size() == INDEX_COUNT);
 		assert(Index < INDEX_COUNT);
 
-		translated Translation = g_Table[Index];
-		assert(Translation != TRANSLATED_INVALID);
-		return Translation;
+		return g_Table[Index];
 	}
 
 	translated index_switch_translate(index Index)
@@ -459,7 +457,7 @@ namespace translation16
 
 	index value_switch_translate(translated Value)
 	{
-		assert(Value < VALUE_COUNT);
+		assert(Value < TRANSLATED_COUNT);
 
 		switch(Value)
 		{
@@ -737,9 +735,7 @@ namespace translation32
 		assert(g_Table.size() == INDEX_COUNT);
 		assert(Index < INDEX_COUNT);
 
-		translated Translation = g_Table[Index];
-		assert(Translation != TRANSLATED_INVALID);
-		return Translation;
+		return g_Table[Index];
 	}
 
 	translated index_switch_translate(index Index)
@@ -1276,9 +1272,7 @@ namespace translation64
 		assert(g_Table.size() == INDEX_COUNT);
 		assert(Index < INDEX_COUNT);
 
-		translated Translation = g_Table[Index];
-		assert(Translation != TRANSLATED_INVALID);
-		return Translation;
+		return g_Table[Index];
 	}
 
 	translated index_switch_translate(index Index)
@@ -2275,9 +2269,7 @@ namespace translation128
 		assert(g_Table.size() == INDEX_COUNT);
 		assert(Index < INDEX_COUNT);
 
-		translated Translation = g_Table[Index];
-		assert(Translation != TRANSLATED_INVALID);
-		return Translation;
+		return g_Table[Index];
 	}
 
 	translated index_switch_translate(index Index)
@@ -2671,9 +2663,9 @@ void test_translation_table()
 	for(std::size_t i = 0; i < DuplicateCount; ++i)
 	{
 		// 4 enum values
-		char const * Title4 = "4, uniform (ms), linear (ms), random (ms)\n";
-		std::printf(Title4);
-		std::fprintf(File, Title4);
+		char const * Title4 = "4, uniform (ms), linear (ms), random (ms)";
+		std::printf("%s\n", Title4);
+		std::fprintf(File, "%s\n", Title4);
 
 		test_translation_set<translation4::index, translation4::translated>(
 			File, "const table    ", IterationCount, TotalCount, translation4::INDEX_COUNT, translation4::const_table_translate);
@@ -2694,9 +2686,9 @@ void test_translation_table()
 			File, "value switch   ", IterationCount, TotalCount, translation4::TRANSLATED_COUNT, translation4::value_switch_translate);
 
 		// 8 enum values
-		char const * Title8 = "8, uniform (ms), linear (ms), random (ms)\n";
-		std::printf(Title8);
-		std::fprintf(File, Title8);
+		char const * Title8 = "8, uniform (ms), linear (ms), random (ms)";
+		std::printf("%s\n", Title8);
+		std::fprintf(File, "%s\n", Title8);
 
 		test_translation_set<translation8::index, translation8::translated>(
 			File, "const table    ", IterationCount, TotalCount, translation8::INDEX_COUNT, translation8::const_table_translate);
@@ -2717,9 +2709,9 @@ void test_translation_table()
 			File, "value switch   ", IterationCount, TotalCount, translation8::TRANSLATED_COUNT, translation8::value_switch_translate);
 
 		// 16 enum values
-		char const * Title16 = "16, uniform (ms), linear (ms), random (ms)\n";
-		std::printf(Title16);
-		std::fprintf(File, Title16);
+		char const * Title16 = "16, uniform (ms), linear (ms), random (ms)";
+		std::printf("%s\n", Title16);
+		std::fprintf(File, "%s\n", Title16);
 
 		test_translation_set<translation16::index, translation16::translated>(
 			File, "const table   ", IterationCount, TotalCount, translation16::INDEX_COUNT, translation16::const_table_translate);
@@ -2740,9 +2732,9 @@ void test_translation_table()
 			File, "value switch  ", IterationCount, TotalCount, translation16::TRANSLATED_COUNT, translation16::value_switch_translate);
 
 		// 32 enum values
-		char const * Title32 = "32, uniform (ms), linear (ms), random (ms)\n";
-		std::printf(Title32);
-		std::fprintf(File, Title32);
+		char const * Title32 = "32, uniform (ms), linear (ms), random (ms)";
+		std::printf("%s\n", Title32);
+		std::fprintf(File, "%s\n", Title32);
 
 		test_translation_set<translation32::index, translation32::translated>(
 			File, "const table   ", IterationCount, TotalCount, translation32::INDEX_COUNT, translation32::const_table_translate);
@@ -2763,9 +2755,9 @@ void test_translation_table()
 			File, "value switch  ", IterationCount, TotalCount, translation32::TRANSLATED_COUNT, translation32::value_switch_translate);
 
 		// 64 enum values
-		char const * Title64 = "64, uniform (ms), linear (ms), random (ms)\n";
-		std::printf(Title64);
-		std::fprintf(File, Title64);
+		char const * Title64 = "64, uniform (ms), linear (ms), random (ms)";
+		std::printf("%s\n", Title64);
+		std::fprintf(File, "%s\n", Title64);
 
 		test_translation_set<translation64::index, translation64::translated>(
 			File, "const table   ", IterationCount, TotalCount, translation64::INDEX_COUNT, translation64::const_table_translate);
@@ -2786,9 +2778,9 @@ void test_translation_table()
 			File, "value switch  ", IterationCount, TotalCount, translation64::TRANSLATED_COUNT, translation64::value_switch_translate);
 
 		// 128 enum values
-		char const * Title128 = "128, uniform (ms), linear (ms), random (ms)\n";
-		std::printf(Title128);
-		std::fprintf(File, Title128);
+		char const * Title128 = "128, uniform (ms), linear (ms), random (ms)";
+		std::printf("%s\n", Title128);
+		std::fprintf(File, "%s\n", Title128);
 
 		test_translation_set<translation128::index, translation128::translated>(
 			File, "const table   ", IterationCount, TotalCount, translation128::INDEX_COUNT, translation128::const_table_translate);

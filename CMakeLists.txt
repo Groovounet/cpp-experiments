@@ -20,4 +20,4 @@ add_executable(${NAME}
 	${ROOT_C_SOURCE}
 	${ROOT_C_HEADER})
 
-add_definitions(-D_CRT_SECURE_NO_WARNINGS -S -mllvm --x86-asm-syntax=intel)
+add_definitions(-D_CRT_SECURE_NO_WARNINGS)
