@@ -91,7 +91,7 @@ void test_sorting_elements_SoA()
 		
 		std::clock_t TimeEnd = std::clock();
 
-		printf("Repack - sort: %d ms\n", (TimeEnd - TimeStart) * 1000 /  CLOCKS_PER_SEC);
+		printf("Repack - sort: %lu ms\n", (TimeEnd - TimeStart) * 1000 /  CLOCKS_PER_SEC);
 	}
 
 	// Packing the draws
@@ -118,7 +118,7 @@ void test_sorting_elements_SoA()
 
 		std::clock_t TimeEnd = std::clock();
 
-		printf("Repack - pack(%d): %d ms\n", j, (TimeEnd - TimeStart) * 1000 /  CLOCKS_PER_SEC);
+		printf("Repack - pack(%lu): %lu ms\n", j, (TimeEnd - TimeStart) * 1000 /  CLOCKS_PER_SEC);
 	}
 
 	{
@@ -131,7 +131,7 @@ void test_sorting_elements_SoA()
 
 		std::clock_t TimeEnd = std::clock();
 
-		printf("Repack - shrink: %d ms\n", (TimeEnd - TimeStart) * 1000 /  CLOCKS_PER_SEC);
+		printf("Repack - shrink: %lu ms\n", (TimeEnd - TimeStart) * 1000 /  CLOCKS_PER_SEC);
 	}
 }
 
@@ -179,7 +179,7 @@ void test_sorting_elements_SoA_cache()
 		
 		std::clock_t TimeEnd = std::clock();
 
-		printf("Cached - sort: %d ms\n", (TimeEnd - TimeStart) * 1000 /  CLOCKS_PER_SEC);
+		printf("Cached - sort: %lu ms\n", (TimeEnd - TimeStart) * 1000 /  CLOCKS_PER_SEC);
 	}
 
 	// Packing the draws
@@ -203,7 +203,7 @@ void test_sorting_elements_SoA_cache()
 
 		std::clock_t TimeEnd = std::clock();
 
-		printf("Cached - pack(%d): %d ms\n", j, (TimeEnd - TimeStart) * 1000 /  CLOCKS_PER_SEC);
+		printf("Cached - pack(%lu): %lu ms\n", j, (TimeEnd - TimeStart) * 1000 /  CLOCKS_PER_SEC);
 	}
 
 	{
@@ -216,7 +216,7 @@ void test_sorting_elements_SoA_cache()
 
 		std::clock_t TimeEnd = std::clock();
 
-		printf("Cached - shrink: %d ms\n", (TimeEnd - TimeStart) * 1000 /  CLOCKS_PER_SEC);
+		printf("Cached - shrink: %lu ms\n", (TimeEnd - TimeStart) * 1000 /  CLOCKS_PER_SEC);
 	}
 }
 
