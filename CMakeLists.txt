@@ -13,6 +13,14 @@ file(GLOB ROOT_C_HEADER *.h)
 
 source_group("Inline Files" FILES ${ROOT_INLINE})
 
+if(("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang") OR ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU") OR (("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel") AND UNIX))
+	set(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LANGUAGE_STANDARD "c++11")
+	set(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LIBRARY "libc++")
+	set(CMAKE_CXX_FLAGS "-std=c++11")
+
+	add_definitions(-O2)
+endif()
+
 add_executable(${NAME} 
 	${ROOT_SOURCE} 
 	${ROOT_INLINE} 

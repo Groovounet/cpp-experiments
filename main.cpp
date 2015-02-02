@@ -4,15 +4,18 @@
 #include "test_overload_return_param.hpp"
 #include "test_translation_table.hpp"
 #include "test_c_wrapper.hpp"
+#include "test_elementsof.hpp"
 
 int main()
 {
 	test_translation_table();
 
+/*
 	test_sorting();
 
 	test_template_template();
 	test_function_template_parameter();
 	test_overload_return_param();
 	test_c_wrapper();
+*/
 }

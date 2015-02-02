@@ -1,5 +1,6 @@
 #include "test_sorting.hpp"
 #include <cstdint>
+#include <cstdio>
 #include <vector>
 #include <random>
 #include <ctime>

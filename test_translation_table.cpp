@@ -1,8 +1,5 @@
 #include "test_translation_table.hpp" 
 
-#include <map>
-#include <vector>
-#include <array>
 #include <ctime>
 #include <cstdio>
 #include <cassert>
@@ -60,39 +57,6 @@ namespace translation4
 		assert(Index < INDEX_COUNT);
 
 		return Table[Index];
-	}
-
-	std::array<translated, INDEX_COUNT> g_Array;
-
-	void array_table_init()
-	{
-		g_Array[INDEX_A] = TRANSLATED_A;
-		g_Array[INDEX_B] = TRANSLATED_B;
-		g_Array[INDEX_C] = TRANSLATED_C;
-		g_Array[INDEX_D] = TRANSLATED_D;
-	}
-
-	translated array_table_translate(index Index)
-	{
-		return g_Array[Index];
-	}
-
-	std::vector<translated> g_Table;
-
-	void dynamic_table_init()
-	{
-		g_Table.resize(INDEX_COUNT);
-		g_Table[INDEX_A] = TRANSLATED_A;
-		g_Table[INDEX_B] = TRANSLATED_B;
-		g_Table[INDEX_C] = TRANSLATED_C;
-		g_Table[INDEX_D] = TRANSLATED_D;
-	}
-
-	translated dynamic_table_translate(index Index)
-	{
-		assert(g_Table.size() == INDEX_COUNT);
-
-		return g_Table[Index];
 	}
 
 	translated index_switch_translate(index Index)
@@ -184,50 +148,6 @@ namespace translation8
 		assert(Index < INDEX_COUNT);
 
 		return Table[Index];
-	}
-
-	std::array<translated, INDEX_COUNT> g_Array;
-
-	void array_table_init()
-	{
-		g_Array[INDEX_A] = TRANSLATED_A;
-		g_Array[INDEX_B] = TRANSLATED_B;
-		g_Array[INDEX_C] = TRANSLATED_C;
-		g_Array[INDEX_D] = TRANSLATED_D;
-		g_Array[INDEX_E] = TRANSLATED_E;
-		g_Array[INDEX_F] = TRANSLATED_F;
-		g_Array[INDEX_G] = TRANSLATED_G;
-		g_Array[INDEX_H] = TRANSLATED_H;
-	}
-
-	translated array_table_translate(index Index)
-	{
-		assert(Index < INDEX_COUNT);
-
-		return g_Array[Index];
-	}
-
-	std::vector<translated> g_Table;
-
-	void dynamic_table_init()
-	{
-		g_Table.resize(INDEX_COUNT);
-		g_Table[INDEX_A] = TRANSLATED_A;
-		g_Table[INDEX_B] = TRANSLATED_B;
-		g_Table[INDEX_C] = TRANSLATED_C;
-		g_Table[INDEX_D] = TRANSLATED_D;
-		g_Table[INDEX_E] = TRANSLATED_E;
-		g_Table[INDEX_F] = TRANSLATED_F;
-		g_Table[INDEX_G] = TRANSLATED_G;
-		g_Table[INDEX_H] = TRANSLATED_H;
-	}
-
-	translated dynamic_table_translate(index Index)
-	{
-		assert(g_Table.size() == INDEX_COUNT);
-		assert(Index < INDEX_COUNT);
-
-		return g_Table[Index];
 	}
 
 	translated index_switch_translate(index Index)
@@ -365,66 +285,6 @@ namespace translation16
 		assert(Index < INDEX_COUNT);
 
 		return Table[Index];
-	}
-
-	std::array<translated, INDEX_COUNT> g_Array;
-
-	void array_table_init()
-	{
-		g_Array[INDEX_A0] = TRANSLATED_A0;
-		g_Array[INDEX_B0] = TRANSLATED_B0;
-		g_Array[INDEX_C0] = TRANSLATED_C0;
-		g_Array[INDEX_D0] = TRANSLATED_D0;
-		g_Array[INDEX_E0] = TRANSLATED_E0;
-		g_Array[INDEX_F0] = TRANSLATED_F0;
-		g_Array[INDEX_G0] = TRANSLATED_G0;
-		g_Array[INDEX_H0] = TRANSLATED_H0;
-		g_Array[INDEX_A1] = TRANSLATED_A1;
-		g_Array[INDEX_B1] = TRANSLATED_B1;
-		g_Array[INDEX_C1] = TRANSLATED_C1;
-		g_Array[INDEX_D1] = TRANSLATED_D1;
-		g_Array[INDEX_E1] = TRANSLATED_E1;
-		g_Array[INDEX_F1] = TRANSLATED_F1;
-		g_Array[INDEX_G1] = TRANSLATED_G1;
-		g_Array[INDEX_H1] = TRANSLATED_H1;
-	}
-
-	translated array_table_translate(index Index)
-	{
-		assert(Index < INDEX_COUNT);
-
-		return g_Array[Index];
-	}
-
-	std::vector<translated> g_Table;
-
-	void dynamic_table_init()
-	{
-		g_Table.resize(INDEX_COUNT);
-		g_Table[INDEX_A0] = TRANSLATED_A0;
-		g_Table[INDEX_B0] = TRANSLATED_B0;
-		g_Table[INDEX_C0] = TRANSLATED_C0;
-		g_Table[INDEX_D0] = TRANSLATED_D0;
-		g_Table[INDEX_E0] = TRANSLATED_E0;
-		g_Table[INDEX_F0] = TRANSLATED_F0;
-		g_Table[INDEX_G0] = TRANSLATED_G0;
-		g_Table[INDEX_H0] = TRANSLATED_H0;
-		g_Table[INDEX_A1] = TRANSLATED_A1;
-		g_Table[INDEX_B1] = TRANSLATED_B1;
-		g_Table[INDEX_C1] = TRANSLATED_C1;
-		g_Table[INDEX_D1] = TRANSLATED_D1;
-		g_Table[INDEX_E1] = TRANSLATED_E1;
-		g_Table[INDEX_F1] = TRANSLATED_F1;
-		g_Table[INDEX_G1] = TRANSLATED_G1;
-		g_Table[INDEX_H1] = TRANSLATED_H1;
-	}
-
-	translated dynamic_table_translate(index Index)
-	{
-		assert(g_Table.size() == INDEX_COUNT);
-		assert(Index < INDEX_COUNT);
-
-		return g_Table[Index];
 	}
 
 	translated index_switch_translate(index Index)
@@ -642,98 +502,6 @@ namespace translation32
 		assert(Index < INDEX_COUNT);
 
 		return Table[Index];
-	}
-
-	std::array<translated, INDEX_COUNT> g_Array;
-
-	void array_table_init()
-	{
-		g_Array[INDEX_A0] = TRANSLATED_A0;
-		g_Array[INDEX_B0] = TRANSLATED_B0;
-		g_Array[INDEX_C0] = TRANSLATED_C0;
-		g_Array[INDEX_D0] = TRANSLATED_D0;
-		g_Array[INDEX_E0] = TRANSLATED_E0;
-		g_Array[INDEX_F0] = TRANSLATED_F0;
-		g_Array[INDEX_G0] = TRANSLATED_G0;
-		g_Array[INDEX_H0] = TRANSLATED_H0;
-		g_Array[INDEX_A1] = TRANSLATED_A1;
-		g_Array[INDEX_B1] = TRANSLATED_B1;
-		g_Array[INDEX_C1] = TRANSLATED_C1;
-		g_Array[INDEX_D1] = TRANSLATED_D1;
-		g_Array[INDEX_E1] = TRANSLATED_E1;
-		g_Array[INDEX_F1] = TRANSLATED_F1;
-		g_Array[INDEX_G1] = TRANSLATED_G1;
-		g_Array[INDEX_H1] = TRANSLATED_H1;
-		g_Array[INDEX_A2] = TRANSLATED_A2;
-		g_Array[INDEX_B2] = TRANSLATED_B2;
-		g_Array[INDEX_C2] = TRANSLATED_C2;
-		g_Array[INDEX_D2] = TRANSLATED_D2;
-		g_Array[INDEX_E2] = TRANSLATED_E2;
-		g_Array[INDEX_F2] = TRANSLATED_F2;
-		g_Array[INDEX_G2] = TRANSLATED_G2;
-		g_Array[INDEX_H2] = TRANSLATED_H2;
-		g_Array[INDEX_A3] = TRANSLATED_A3;
-		g_Array[INDEX_B3] = TRANSLATED_B3;
-		g_Array[INDEX_C3] = TRANSLATED_C3;
-		g_Array[INDEX_D3] = TRANSLATED_D3;
-		g_Array[INDEX_E3] = TRANSLATED_E3;
-		g_Array[INDEX_F3] = TRANSLATED_F3;
-		g_Array[INDEX_G3] = TRANSLATED_G3;
-		g_Array[INDEX_H3] = TRANSLATED_H3;
-	}
-
-	translated array_table_translate(index Index)
-	{
-		assert(Index < INDEX_COUNT);
-
-		return g_Array[Index];
-	}
-
-	std::vector<translated> g_Table;
-
-	void dynamic_table_init()
-	{
-		g_Table.resize(INDEX_COUNT);
-		g_Table[INDEX_A0] = TRANSLATED_A0;
-		g_Table[INDEX_B0] = TRANSLATED_B0;
-		g_Table[INDEX_C0] = TRANSLATED_C0;
-		g_Table[INDEX_D0] = TRANSLATED_D0;
-		g_Table[INDEX_E0] = TRANSLATED_E0;
-		g_Table[INDEX_F0] = TRANSLATED_F0;
-		g_Table[INDEX_G0] = TRANSLATED_G0;
-		g_Table[INDEX_H0] = TRANSLATED_H0;
-		g_Table[INDEX_A1] = TRANSLATED_A1;
-		g_Table[INDEX_B1] = TRANSLATED_B1;
-		g_Table[INDEX_C1] = TRANSLATED_C1;
-		g_Table[INDEX_D1] = TRANSLATED_D1;
-		g_Table[INDEX_E1] = TRANSLATED_E1;
-		g_Table[INDEX_F1] = TRANSLATED_F1;
-		g_Table[INDEX_G1] = TRANSLATED_G1;
-		g_Table[INDEX_H1] = TRANSLATED_H1;
-		g_Table[INDEX_A2] = TRANSLATED_A2;
-		g_Table[INDEX_B2] = TRANSLATED_B2;
-		g_Table[INDEX_C2] = TRANSLATED_C2;
-		g_Table[INDEX_D2] = TRANSLATED_D2;
-		g_Table[INDEX_E2] = TRANSLATED_E2;
-		g_Table[INDEX_F2] = TRANSLATED_F2;
-		g_Table[INDEX_G2] = TRANSLATED_G2;
-		g_Table[INDEX_H2] = TRANSLATED_H2;
-		g_Table[INDEX_A3] = TRANSLATED_A3;
-		g_Table[INDEX_B3] = TRANSLATED_B3;
-		g_Table[INDEX_C3] = TRANSLATED_C3;
-		g_Table[INDEX_D3] = TRANSLATED_D3;
-		g_Table[INDEX_E3] = TRANSLATED_E3;
-		g_Table[INDEX_F3] = TRANSLATED_F3;
-		g_Table[INDEX_G3] = TRANSLATED_G3;
-		g_Table[INDEX_H3] = TRANSLATED_H3;
-	}
-
-	translated dynamic_table_translate(index Index)
-	{
-		assert(g_Table.size() == INDEX_COUNT);
-		assert(Index < INDEX_COUNT);
-
-		return g_Table[Index];
 	}
 
 	translated index_switch_translate(index Index)
@@ -1113,164 +881,6 @@ namespace translation64
 		assert(Index < INDEX_COUNT);
 
 		return Table[Index];
-	}
-
-	std::array<translated, INDEX_COUNT> g_Array;
-
-	void array_table_init()
-	{
-		g_Array[INDEX_A0] = TRANSLATED_A0;
-		g_Array[INDEX_B0] = TRANSLATED_B0;
-		g_Array[INDEX_C0] = TRANSLATED_C0;
-		g_Array[INDEX_D0] = TRANSLATED_D0;
-		g_Array[INDEX_E0] = TRANSLATED_E0;
-		g_Array[INDEX_F0] = TRANSLATED_F0;
-		g_Array[INDEX_G0] = TRANSLATED_G0;
-		g_Array[INDEX_H0] = TRANSLATED_H0;
-		g_Array[INDEX_A1] = TRANSLATED_A1;
-		g_Array[INDEX_B1] = TRANSLATED_B1;
-		g_Array[INDEX_C1] = TRANSLATED_C1;
-		g_Array[INDEX_D1] = TRANSLATED_D1;
-		g_Array[INDEX_E1] = TRANSLATED_E1;
-		g_Array[INDEX_F1] = TRANSLATED_F1;
-		g_Array[INDEX_G1] = TRANSLATED_G1;
-		g_Array[INDEX_H1] = TRANSLATED_H1;
-		g_Array[INDEX_A2] = TRANSLATED_A2;
-		g_Array[INDEX_B2] = TRANSLATED_B2;
-		g_Array[INDEX_C2] = TRANSLATED_C2;
-		g_Array[INDEX_D2] = TRANSLATED_D2;
-		g_Array[INDEX_E2] = TRANSLATED_E2;
-		g_Array[INDEX_F2] = TRANSLATED_F2;
-		g_Array[INDEX_G2] = TRANSLATED_G2;
-		g_Array[INDEX_H2] = TRANSLATED_H2;
-		g_Array[INDEX_A3] = TRANSLATED_A3;
-		g_Array[INDEX_B3] = TRANSLATED_B3;
-		g_Array[INDEX_C3] = TRANSLATED_C3;
-		g_Array[INDEX_D3] = TRANSLATED_D3;
-		g_Array[INDEX_E3] = TRANSLATED_E3;
-		g_Array[INDEX_F3] = TRANSLATED_F3;
-		g_Array[INDEX_G3] = TRANSLATED_G3;
-		g_Array[INDEX_H3] = TRANSLATED_H3;
-
-		g_Array[INDEX_A4] = TRANSLATED_A4;
-		g_Array[INDEX_B4] = TRANSLATED_B4;
-		g_Array[INDEX_C4] = TRANSLATED_C4;
-		g_Array[INDEX_D4] = TRANSLATED_D4;
-		g_Array[INDEX_E4] = TRANSLATED_E4;
-		g_Array[INDEX_F4] = TRANSLATED_F4;
-		g_Array[INDEX_G4] = TRANSLATED_G4;
-		g_Array[INDEX_H4] = TRANSLATED_H4;
-		g_Array[INDEX_A5] = TRANSLATED_A5;
-		g_Array[INDEX_B5] = TRANSLATED_B5;
-		g_Array[INDEX_C5] = TRANSLATED_C5;
-		g_Array[INDEX_D5] = TRANSLATED_D5;
-		g_Array[INDEX_E5] = TRANSLATED_E5;
-		g_Array[INDEX_F5] = TRANSLATED_F5;
-		g_Array[INDEX_G5] = TRANSLATED_G5;
-		g_Array[INDEX_H5] = TRANSLATED_H5;
-		g_Array[INDEX_A6] = TRANSLATED_A6;
-		g_Array[INDEX_B6] = TRANSLATED_B6;
-		g_Array[INDEX_C6] = TRANSLATED_C6;
-		g_Array[INDEX_D6] = TRANSLATED_D6;
-		g_Array[INDEX_E6] = TRANSLATED_E6;
-		g_Array[INDEX_F6] = TRANSLATED_F6;
-		g_Array[INDEX_G6] = TRANSLATED_G6;
-		g_Array[INDEX_H6] = TRANSLATED_H6;
-		g_Array[INDEX_A7] = TRANSLATED_A7;
-		g_Array[INDEX_B7] = TRANSLATED_B7;
-		g_Array[INDEX_C7] = TRANSLATED_C7;
-		g_Array[INDEX_D7] = TRANSLATED_D7;
-		g_Array[INDEX_E7] = TRANSLATED_E7;
-		g_Array[INDEX_F7] = TRANSLATED_F7;
-		g_Array[INDEX_G7] = TRANSLATED_G7;
-		g_Array[INDEX_H7] = TRANSLATED_H7;
-	}
-
-	translated array_table_translate(index Index)
-	{
-		assert(Index < INDEX_COUNT);
-
-		return g_Array[Index];
-	}
-
-	std::vector<translated> g_Table;
-
-	void dynamic_table_init()
-	{
-		g_Table.resize(INDEX_COUNT);
-		g_Table[INDEX_A0] = TRANSLATED_A0;
-		g_Table[INDEX_B0] = TRANSLATED_B0;
-		g_Table[INDEX_C0] = TRANSLATED_C0;
-		g_Table[INDEX_D0] = TRANSLATED_D0;
-		g_Table[INDEX_E0] = TRANSLATED_E0;
-		g_Table[INDEX_F0] = TRANSLATED_F0;
-		g_Table[INDEX_G0] = TRANSLATED_G0;
-		g_Table[INDEX_H0] = TRANSLATED_H0;
-		g_Table[INDEX_A1] = TRANSLATED_A1;
-		g_Table[INDEX_B1] = TRANSLATED_B1;
-		g_Table[INDEX_C1] = TRANSLATED_C1;
-		g_Table[INDEX_D1] = TRANSLATED_D1;
-		g_Table[INDEX_E1] = TRANSLATED_E1;
-		g_Table[INDEX_F1] = TRANSLATED_F1;
-		g_Table[INDEX_G1] = TRANSLATED_G1;
-		g_Table[INDEX_H1] = TRANSLATED_H1;
-		g_Table[INDEX_A2] = TRANSLATED_A2;
-		g_Table[INDEX_B2] = TRANSLATED_B2;
-		g_Table[INDEX_C2] = TRANSLATED_C2;
-		g_Table[INDEX_D2] = TRANSLATED_D2;
-		g_Table[INDEX_E2] = TRANSLATED_E2;
-		g_Table[INDEX_F2] = TRANSLATED_F2;
-		g_Table[INDEX_G2] = TRANSLATED_G2;
-		g_Table[INDEX_H2] = TRANSLATED_H2;
-		g_Table[INDEX_A3] = TRANSLATED_A3;
-		g_Table[INDEX_B3] = TRANSLATED_B3;
-		g_Table[INDEX_C3] = TRANSLATED_C3;
-		g_Table[INDEX_D3] = TRANSLATED_D3;
-		g_Table[INDEX_E3] = TRANSLATED_E3;
-		g_Table[INDEX_F3] = TRANSLATED_F3;
-		g_Table[INDEX_G3] = TRANSLATED_G3;
-		g_Table[INDEX_H3] = TRANSLATED_H3;
-
-		g_Table[INDEX_A4] = TRANSLATED_A4;
-		g_Table[INDEX_B4] = TRANSLATED_B4;
-		g_Table[INDEX_C4] = TRANSLATED_C4;
-		g_Table[INDEX_D4] = TRANSLATED_D4;
-		g_Table[INDEX_E4] = TRANSLATED_E4;
-		g_Table[INDEX_F4] = TRANSLATED_F4;
-		g_Table[INDEX_G4] = TRANSLATED_G4;
-		g_Table[INDEX_H4] = TRANSLATED_H4;
-		g_Table[INDEX_A5] = TRANSLATED_A5;
-		g_Table[INDEX_B5] = TRANSLATED_B5;
-		g_Table[INDEX_C5] = TRANSLATED_C5;
-		g_Table[INDEX_D5] = TRANSLATED_D5;
-		g_Table[INDEX_E5] = TRANSLATED_E5;
-		g_Table[INDEX_F5] = TRANSLATED_F5;
-		g_Table[INDEX_G5] = TRANSLATED_G5;
-		g_Table[INDEX_H5] = TRANSLATED_H5;
-		g_Table[INDEX_A6] = TRANSLATED_A6;
-		g_Table[INDEX_B6] = TRANSLATED_B6;
-		g_Table[INDEX_C6] = TRANSLATED_C6;
-		g_Table[INDEX_D6] = TRANSLATED_D6;
-		g_Table[INDEX_E6] = TRANSLATED_E6;
-		g_Table[INDEX_F6] = TRANSLATED_F6;
-		g_Table[INDEX_G6] = TRANSLATED_G6;
-		g_Table[INDEX_H6] = TRANSLATED_H6;
-		g_Table[INDEX_A7] = TRANSLATED_A7;
-		g_Table[INDEX_B7] = TRANSLATED_B7;
-		g_Table[INDEX_C7] = TRANSLATED_C7;
-		g_Table[INDEX_D7] = TRANSLATED_D7;
-		g_Table[INDEX_E7] = TRANSLATED_E7;
-		g_Table[INDEX_F7] = TRANSLATED_F7;
-		g_Table[INDEX_G7] = TRANSLATED_G7;
-		g_Table[INDEX_H7] = TRANSLATED_H7;
-	}
-
-	translated dynamic_table_translate(index Index)
-	{
-		assert(g_Table.size() == INDEX_COUNT);
-		assert(Index < INDEX_COUNT);
-
-		return g_Table[Index];
 	}
 
 	translated index_switch_translate(index Index)
@@ -1980,296 +1590,6 @@ namespace translation128
 		return Table[Index];
 	}
 
-	std::array<translated, INDEX_COUNT> g_Array;
-
-	void array_table_init()
-	{
-		g_Array[INDEX_A0] = TRANSLATED_A0;
-		g_Array[INDEX_B0] = TRANSLATED_B0;
-		g_Array[INDEX_C0] = TRANSLATED_C0;
-		g_Array[INDEX_D0] = TRANSLATED_D0;
-		g_Array[INDEX_E0] = TRANSLATED_E0;
-		g_Array[INDEX_F0] = TRANSLATED_F0;
-		g_Array[INDEX_G0] = TRANSLATED_G0;
-		g_Array[INDEX_H0] = TRANSLATED_H0;
-		g_Array[INDEX_A1] = TRANSLATED_A1;
-		g_Array[INDEX_B1] = TRANSLATED_B1;
-		g_Array[INDEX_C1] = TRANSLATED_C1;
-		g_Array[INDEX_D1] = TRANSLATED_D1;
-		g_Array[INDEX_E1] = TRANSLATED_E1;
-		g_Array[INDEX_F1] = TRANSLATED_F1;
-		g_Array[INDEX_G1] = TRANSLATED_G1;
-		g_Array[INDEX_H1] = TRANSLATED_H1;
-		g_Array[INDEX_A2] = TRANSLATED_A2;
-		g_Array[INDEX_B2] = TRANSLATED_B2;
-		g_Array[INDEX_C2] = TRANSLATED_C2;
-		g_Array[INDEX_D2] = TRANSLATED_D2;
-		g_Array[INDEX_E2] = TRANSLATED_E2;
-		g_Array[INDEX_F2] = TRANSLATED_F2;
-		g_Array[INDEX_G2] = TRANSLATED_G2;
-		g_Array[INDEX_H2] = TRANSLATED_H2;
-		g_Array[INDEX_A3] = TRANSLATED_A3;
-		g_Array[INDEX_B3] = TRANSLATED_B3;
-		g_Array[INDEX_C3] = TRANSLATED_C3;
-		g_Array[INDEX_D3] = TRANSLATED_D3;
-		g_Array[INDEX_E3] = TRANSLATED_E3;
-		g_Array[INDEX_F3] = TRANSLATED_F3;
-		g_Array[INDEX_G3] = TRANSLATED_G3;
-		g_Array[INDEX_H3] = TRANSLATED_H3;
-
-		g_Array[INDEX_A4] = TRANSLATED_A4;
-		g_Array[INDEX_B4] = TRANSLATED_B4;
-		g_Array[INDEX_C4] = TRANSLATED_C4;
-		g_Array[INDEX_D4] = TRANSLATED_D4;
-		g_Array[INDEX_E4] = TRANSLATED_E4;
-		g_Array[INDEX_F4] = TRANSLATED_F4;
-		g_Array[INDEX_G4] = TRANSLATED_G4;
-		g_Array[INDEX_H4] = TRANSLATED_H4;
-		g_Array[INDEX_A5] = TRANSLATED_A5;
-		g_Array[INDEX_B5] = TRANSLATED_B5;
-		g_Array[INDEX_C5] = TRANSLATED_C5;
-		g_Array[INDEX_D5] = TRANSLATED_D5;
-		g_Array[INDEX_E5] = TRANSLATED_E5;
-		g_Array[INDEX_F5] = TRANSLATED_F5;
-		g_Array[INDEX_G5] = TRANSLATED_G5;
-		g_Array[INDEX_H5] = TRANSLATED_H5;
-		g_Array[INDEX_A6] = TRANSLATED_A6;
-		g_Array[INDEX_B6] = TRANSLATED_B6;
-		g_Array[INDEX_C6] = TRANSLATED_C6;
-		g_Array[INDEX_D6] = TRANSLATED_D6;
-		g_Array[INDEX_E6] = TRANSLATED_E6;
-		g_Array[INDEX_F6] = TRANSLATED_F6;
-		g_Array[INDEX_G6] = TRANSLATED_G6;
-		g_Array[INDEX_H6] = TRANSLATED_H6;
-		g_Array[INDEX_A7] = TRANSLATED_A7;
-		g_Array[INDEX_B7] = TRANSLATED_B7;
-		g_Array[INDEX_C7] = TRANSLATED_C7;
-		g_Array[INDEX_D7] = TRANSLATED_D7;
-		g_Array[INDEX_E7] = TRANSLATED_E7;
-		g_Array[INDEX_F7] = TRANSLATED_F7;
-		g_Array[INDEX_G7] = TRANSLATED_G7;
-		g_Array[INDEX_H7] = TRANSLATED_H7;
-
-		g_Array[INDEX_A8] = TRANSLATED_A8;
-		g_Array[INDEX_B8] = TRANSLATED_B8;
-		g_Array[INDEX_C8] = TRANSLATED_C8;
-		g_Array[INDEX_D8] = TRANSLATED_D8;
-		g_Array[INDEX_E8] = TRANSLATED_E8;
-		g_Array[INDEX_F8] = TRANSLATED_F8;
-		g_Array[INDEX_G8] = TRANSLATED_G8;
-		g_Array[INDEX_H8] = TRANSLATED_H8;
-		g_Array[INDEX_A9] = TRANSLATED_A9;
-		g_Array[INDEX_B9] = TRANSLATED_B9;
-		g_Array[INDEX_C9] = TRANSLATED_C9;
-		g_Array[INDEX_D9] = TRANSLATED_D9;
-		g_Array[INDEX_E9] = TRANSLATED_E9;
-		g_Array[INDEX_F9] = TRANSLATED_F9;
-		g_Array[INDEX_G9] = TRANSLATED_G9;
-		g_Array[INDEX_H9] = TRANSLATED_H9;
-		g_Array[INDEX_AA] = TRANSLATED_AA;
-		g_Array[INDEX_BA] = TRANSLATED_BA;
-		g_Array[INDEX_CA] = TRANSLATED_CA;
-		g_Array[INDEX_DA] = TRANSLATED_DA;
-		g_Array[INDEX_EA] = TRANSLATED_EA;
-		g_Array[INDEX_FA] = TRANSLATED_FA;
-		g_Array[INDEX_GA] = TRANSLATED_GA;
-		g_Array[INDEX_HA] = TRANSLATED_HA;
-		g_Array[INDEX_AB] = TRANSLATED_AB;
-		g_Array[INDEX_BB] = TRANSLATED_BB;
-		g_Array[INDEX_CB] = TRANSLATED_CB;
-		g_Array[INDEX_DB] = TRANSLATED_DB;
-		g_Array[INDEX_EB] = TRANSLATED_EB;
-		g_Array[INDEX_FB] = TRANSLATED_FB;
-		g_Array[INDEX_GB] = TRANSLATED_GB;
-		g_Array[INDEX_HB] = TRANSLATED_HB;
-
-		g_Array[INDEX_AC] = TRANSLATED_AC;
-		g_Array[INDEX_BC] = TRANSLATED_BC;
-		g_Array[INDEX_CC] = TRANSLATED_CC;
-		g_Array[INDEX_DC] = TRANSLATED_DC;
-		g_Array[INDEX_EC] = TRANSLATED_EC;
-		g_Array[INDEX_FC] = TRANSLATED_FC;
-		g_Array[INDEX_GC] = TRANSLATED_GC;
-		g_Array[INDEX_HC] = TRANSLATED_HC;
-		g_Array[INDEX_AD] = TRANSLATED_AD;
-		g_Array[INDEX_BD] = TRANSLATED_BD;
-		g_Array[INDEX_CD] = TRANSLATED_CD;
-		g_Array[INDEX_DD] = TRANSLATED_DD;
-		g_Array[INDEX_ED] = TRANSLATED_ED;
-		g_Array[INDEX_FD] = TRANSLATED_FD;
-		g_Array[INDEX_GD] = TRANSLATED_GD;
-		g_Array[INDEX_HD] = TRANSLATED_HD;
-		g_Array[INDEX_AE] = TRANSLATED_AE;
-		g_Array[INDEX_BE] = TRANSLATED_BE;
-		g_Array[INDEX_CE] = TRANSLATED_CE;
-		g_Array[INDEX_DE] = TRANSLATED_DE;
-		g_Array[INDEX_EE] = TRANSLATED_EE;
-		g_Array[INDEX_FE] = TRANSLATED_FE;
-		g_Array[INDEX_GE] = TRANSLATED_GE;
-		g_Array[INDEX_HE] = TRANSLATED_HE;
-		g_Array[INDEX_AF] = TRANSLATED_AF;
-		g_Array[INDEX_BF] = TRANSLATED_BF;
-		g_Array[INDEX_CF] = TRANSLATED_CF;
-		g_Array[INDEX_DF] = TRANSLATED_DF;
-		g_Array[INDEX_EF] = TRANSLATED_EF;
-		g_Array[INDEX_FF] = TRANSLATED_FF;
-		g_Array[INDEX_GF] = TRANSLATED_GF;
-		g_Array[INDEX_HF] = TRANSLATED_HF;
-	}
-
-	translated array_table_translate(index Index)
-	{
-		assert(Index < INDEX_COUNT);
-
-		return g_Array[Index];
-	}
-
-	std::vector<translated> g_Table;
-
-	void dynamic_table_init()
-	{
-		g_Table.resize(INDEX_COUNT);
-		g_Table[INDEX_A0] = TRANSLATED_A0;
-		g_Table[INDEX_B0] = TRANSLATED_B0;
-		g_Table[INDEX_C0] = TRANSLATED_C0;
-		g_Table[INDEX_D0] = TRANSLATED_D0;
-		g_Table[INDEX_E0] = TRANSLATED_E0;
-		g_Table[INDEX_F0] = TRANSLATED_F0;
-		g_Table[INDEX_G0] = TRANSLATED_G0;
-		g_Table[INDEX_H0] = TRANSLATED_H0;
-		g_Table[INDEX_A1] = TRANSLATED_A1;
-		g_Table[INDEX_B1] = TRANSLATED_B1;
-		g_Table[INDEX_C1] = TRANSLATED_C1;
-		g_Table[INDEX_D1] = TRANSLATED_D1;
-		g_Table[INDEX_E1] = TRANSLATED_E1;
-		g_Table[INDEX_F1] = TRANSLATED_F1;
-		g_Table[INDEX_G1] = TRANSLATED_G1;
-		g_Table[INDEX_H1] = TRANSLATED_H1;
-		g_Table[INDEX_A2] = TRANSLATED_A2;
-		g_Table[INDEX_B2] = TRANSLATED_B2;
-		g_Table[INDEX_C2] = TRANSLATED_C2;
-		g_Table[INDEX_D2] = TRANSLATED_D2;
-		g_Table[INDEX_E2] = TRANSLATED_E2;
-		g_Table[INDEX_F2] = TRANSLATED_F2;
-		g_Table[INDEX_G2] = TRANSLATED_G2;
-		g_Table[INDEX_H2] = TRANSLATED_H2;
-		g_Table[INDEX_A3] = TRANSLATED_A3;
-		g_Table[INDEX_B3] = TRANSLATED_B3;
-		g_Table[INDEX_C3] = TRANSLATED_C3;
-		g_Table[INDEX_D3] = TRANSLATED_D3;
-		g_Table[INDEX_E3] = TRANSLATED_E3;
-		g_Table[INDEX_F3] = TRANSLATED_F3;
-		g_Table[INDEX_G3] = TRANSLATED_G3;
-		g_Table[INDEX_H3] = TRANSLATED_H3;
-
-		g_Table[INDEX_A4] = TRANSLATED_A4;
-		g_Table[INDEX_B4] = TRANSLATED_B4;
-		g_Table[INDEX_C4] = TRANSLATED_C4;
-		g_Table[INDEX_D4] = TRANSLATED_D4;
-		g_Table[INDEX_E4] = TRANSLATED_E4;
-		g_Table[INDEX_F4] = TRANSLATED_F4;
-		g_Table[INDEX_G4] = TRANSLATED_G4;
-		g_Table[INDEX_H4] = TRANSLATED_H4;
-		g_Table[INDEX_A5] = TRANSLATED_A5;
-		g_Table[INDEX_B5] = TRANSLATED_B5;
-		g_Table[INDEX_C5] = TRANSLATED_C5;
-		g_Table[INDEX_D5] = TRANSLATED_D5;
-		g_Table[INDEX_E5] = TRANSLATED_E5;
-		g_Table[INDEX_F5] = TRANSLATED_F5;
-		g_Table[INDEX_G5] = TRANSLATED_G5;
-		g_Table[INDEX_H5] = TRANSLATED_H5;
-		g_Table[INDEX_A6] = TRANSLATED_A6;
-		g_Table[INDEX_B6] = TRANSLATED_B6;
-		g_Table[INDEX_C6] = TRANSLATED_C6;
-		g_Table[INDEX_D6] = TRANSLATED_D6;
-		g_Table[INDEX_E6] = TRANSLATED_E6;
-		g_Table[INDEX_F6] = TRANSLATED_F6;
-		g_Table[INDEX_G6] = TRANSLATED_G6;
-		g_Table[INDEX_H6] = TRANSLATED_H6;
-		g_Table[INDEX_A7] = TRANSLATED_A7;
-		g_Table[INDEX_B7] = TRANSLATED_B7;
-		g_Table[INDEX_C7] = TRANSLATED_C7;
-		g_Table[INDEX_D7] = TRANSLATED_D7;
-		g_Table[INDEX_E7] = TRANSLATED_E7;
-		g_Table[INDEX_F7] = TRANSLATED_F7;
-		g_Table[INDEX_G7] = TRANSLATED_G7;
-		g_Table[INDEX_H7] = TRANSLATED_H7;
-
-		g_Table[INDEX_A8] = TRANSLATED_A8;
-		g_Table[INDEX_B8] = TRANSLATED_B8;
-		g_Table[INDEX_C8] = TRANSLATED_C8;
-		g_Table[INDEX_D8] = TRANSLATED_D8;
-		g_Table[INDEX_E8] = TRANSLATED_E8;
-		g_Table[INDEX_F8] = TRANSLATED_F8;
-		g_Table[INDEX_G8] = TRANSLATED_G8;
-		g_Table[INDEX_H8] = TRANSLATED_H8;
-		g_Table[INDEX_A9] = TRANSLATED_A9;
-		g_Table[INDEX_B9] = TRANSLATED_B9;
-		g_Table[INDEX_C9] = TRANSLATED_C9;
-		g_Table[INDEX_D9] = TRANSLATED_D9;
-		g_Table[INDEX_E9] = TRANSLATED_E9;
-		g_Table[INDEX_F9] = TRANSLATED_F9;
-		g_Table[INDEX_G9] = TRANSLATED_G9;
-		g_Table[INDEX_H9] = TRANSLATED_H9;
-		g_Table[INDEX_AA] = TRANSLATED_AA;
-		g_Table[INDEX_BA] = TRANSLATED_BA;
-		g_Table[INDEX_CA] = TRANSLATED_CA;
-		g_Table[INDEX_DA] = TRANSLATED_DA;
-		g_Table[INDEX_EA] = TRANSLATED_EA;
-		g_Table[INDEX_FA] = TRANSLATED_FA;
-		g_Table[INDEX_GA] = TRANSLATED_GA;
-		g_Table[INDEX_HA] = TRANSLATED_HA;
-		g_Table[INDEX_AB] = TRANSLATED_AB;
-		g_Table[INDEX_BB] = TRANSLATED_BB;
-		g_Table[INDEX_CB] = TRANSLATED_CB;
-		g_Table[INDEX_DB] = TRANSLATED_DB;
-		g_Table[INDEX_EB] = TRANSLATED_EB;
-		g_Table[INDEX_FB] = TRANSLATED_FB;
-		g_Table[INDEX_GB] = TRANSLATED_GB;
-		g_Table[INDEX_HB] = TRANSLATED_HB;
-
-		g_Table[INDEX_AC] = TRANSLATED_AC;
-		g_Table[INDEX_BC] = TRANSLATED_BC;
-		g_Table[INDEX_CC] = TRANSLATED_CC;
-		g_Table[INDEX_DC] = TRANSLATED_DC;
-		g_Table[INDEX_EC] = TRANSLATED_EC;
-		g_Table[INDEX_FC] = TRANSLATED_FC;
-		g_Table[INDEX_GC] = TRANSLATED_GC;
-		g_Table[INDEX_HC] = TRANSLATED_HC;
-		g_Table[INDEX_AD] = TRANSLATED_AD;
-		g_Table[INDEX_BD] = TRANSLATED_BD;
-		g_Table[INDEX_CD] = TRANSLATED_CD;
-		g_Table[INDEX_DD] = TRANSLATED_DD;
-		g_Table[INDEX_ED] = TRANSLATED_ED;
-		g_Table[INDEX_FD] = TRANSLATED_FD;
-		g_Table[INDEX_GD] = TRANSLATED_GD;
-		g_Table[INDEX_HD] = TRANSLATED_HD;
-		g_Table[INDEX_AE] = TRANSLATED_AE;
-		g_Table[INDEX_BE] = TRANSLATED_BE;
-		g_Table[INDEX_CE] = TRANSLATED_CE;
-		g_Table[INDEX_DE] = TRANSLATED_DE;
-		g_Table[INDEX_EE] = TRANSLATED_EE;
-		g_Table[INDEX_FE] = TRANSLATED_FE;
-		g_Table[INDEX_GE] = TRANSLATED_GE;
-		g_Table[INDEX_HE] = TRANSLATED_HE;
-		g_Table[INDEX_AF] = TRANSLATED_AF;
-		g_Table[INDEX_BF] = TRANSLATED_BF;
-		g_Table[INDEX_CF] = TRANSLATED_CF;
-		g_Table[INDEX_DF] = TRANSLATED_DF;
-		g_Table[INDEX_EF] = TRANSLATED_EF;
-		g_Table[INDEX_FF] = TRANSLATED_FF;
-		g_Table[INDEX_GF] = TRANSLATED_GF;
-		g_Table[INDEX_HF] = TRANSLATED_HF;
-	}
-
-	translated dynamic_table_translate(index Index)
-	{
-		assert(g_Table.size() == INDEX_COUNT);
-		assert(Index < INDEX_COUNT);
-
-		return g_Table[Index];
-	}
-
 	translated index_switch_translate(index Index)
 	{
 		assert(Index < INDEX_COUNT);
@@ -2554,19 +1874,19 @@ namespace translation128
 }//namespace translation128
 
 template <typename INDEX_ENUM>
-std::vector<INDEX_ENUM> generate_linear_data(std::size_t TotalCount, std::size_t IndexCount)
+INDEX_ENUM* generate_linear_data(std::size_t TotalCount, std::size_t IndexCount)
 {
-	std::vector<INDEX_ENUM> Data(TotalCount);
+	INDEX_ENUM* Data = new INDEX_ENUM[TotalCount];
 	for(std::size_t i = 0; i < TotalCount; ++i)
 		Data[i] = static_cast<INDEX_ENUM>(i % IndexCount);
 	return Data;
 }
 
 template <typename INDEX_ENUM>
-std::vector<INDEX_ENUM> generate_uniform_data(std::size_t TotalCount, std::size_t IndexCount)
+INDEX_ENUM* generate_uniform_data(std::size_t TotalCount, std::size_t IndexCount)
 {
 	std::size_t const SectionCount = TotalCount / IndexCount;
-	std::vector<INDEX_ENUM> Data(TotalCount);
+	INDEX_ENUM* Data = new INDEX_ENUM[TotalCount];
 
 	for(std::size_t i = 0; i < TotalCount; ++i)
 		Data[i] = static_cast<INDEX_ENUM>(i / SectionCount);
@@ -2575,20 +1895,22 @@ std::vector<INDEX_ENUM> generate_uniform_data(std::size_t TotalCount, std::size_
 }
 
 template <typename INDEX_ENUM>
-std::vector<INDEX_ENUM> generate_random_data(std::size_t TotalCount, std::size_t IndexCount)
+INDEX_ENUM* generate_random_data(std::size_t TotalCount, std::size_t IndexCount)
 {
-	std::vector<INDEX_ENUM> Data(TotalCount);
+	INDEX_ENUM* Data = new INDEX_ENUM[TotalCount];
 	for(std::size_t i = 0; i < TotalCount; ++i)
 		Data[i] = static_cast<INDEX_ENUM>(std::rand() % IndexCount);
 	return Data;
 }
 
+std::size_t g_TotalCount = 0;
+
 template <typename INDEX_ENUM, typename TRANSLATED_ENUM>
-std::clock_t exec(std::vector<INDEX_ENUM> const & Tests, TRANSLATED_ENUM (*Translate) (INDEX_ENUM), int & Result)
+std::clock_t exec(INDEX_ENUM * Tests, TRANSLATED_ENUM (*Translate) (INDEX_ENUM), int & Result)
 {
 	std::clock_t TimeStart = std::clock();
 
-	for(std::size_t i = 0; i < Tests.size(); ++i)
+	for(std::size_t i = 0; i < g_TotalCount; ++i)
 		Result += Translate(Tests[i]);
 
 	std::clock_t TimeEnd = std::clock();
@@ -2599,9 +1921,11 @@ std::clock_t exec(std::vector<INDEX_ENUM> const & Tests, TRANSLATED_ENUM (*Trans
 template <typename INDEX_ENUM, typename TRANSLATED_ENUM>
 void test_translation_set(FILE* File, char const * Title, std::size_t IterationCount, std::size_t TotalCount, std::size_t IndexCount, TRANSLATED_ENUM (*Translate) (INDEX_ENUM))
 {
-	std::vector<INDEX_ENUM> const UniformData(generate_uniform_data<INDEX_ENUM>(TotalCount, IndexCount));
-	std::vector<INDEX_ENUM> const LinearData(generate_linear_data<INDEX_ENUM>(TotalCount, IndexCount));
-	std::vector<INDEX_ENUM> const RandomData(generate_random_data<INDEX_ENUM>(TotalCount, IndexCount));
+	g_TotalCount = TotalCount;
+
+	INDEX_ENUM* UniformData(generate_uniform_data<INDEX_ENUM>(TotalCount, IndexCount));
+	INDEX_ENUM* LinearData(generate_linear_data<INDEX_ENUM>(TotalCount, IndexCount));
+	INDEX_ENUM* RandomData(generate_random_data<INDEX_ENUM>(TotalCount, IndexCount));
 
 	int Result = 0;
 	std::clock_t TimeTableUniform = 0;
@@ -2629,7 +1953,7 @@ void test_translation_set(FILE* File, char const * Title, std::size_t IterationC
 
 	std::fprintf(
 		File,
-		"%s, %lu, %lu, %lu\n",
+		"%s; %lu; %lu; %lu\n",
 		Title,
 		TimeTableUniform * 1000 / CLOCKS_PER_SEC,
 		TimeTableLinear * 1000 / CLOCKS_PER_SEC,
@@ -2642,26 +1966,13 @@ void test_translation_table()
 	std::size_t const IterationCount = 5;
 	std::size_t const TotalCount = 50000000;
 
-	translation4::array_table_init();
-	translation4::dynamic_table_init();
-	translation8::array_table_init();
-	translation8::dynamic_table_init();
-	translation16::array_table_init();
-	translation16::dynamic_table_init();
-	translation32::array_table_init();
-	translation32::dynamic_table_init();
-	translation64::array_table_init();
-	translation64::dynamic_table_init();
-	translation128::array_table_init();
-	translation128::dynamic_table_init();
-
 	FILE* File = fopen("results.csv", "a+");
 	assert(File != NULL);
 
 	for(std::size_t i = 0; i < DuplicateCount; ++i)
 	{
 		// 4 enum values
-		char const * Title4 = "4, uniform (ms), linear (ms), random (ms)";
+		char const * Title4 = "4; uniform (ms); linear (ms); random (ms)";
 		std::printf("%s\n", Title4);
 		std::fprintf(File, "%s\n", Title4);
 
@@ -2672,19 +1983,13 @@ void test_translation_table()
 			File, "static table   ", IterationCount, TotalCount, translation4::INDEX_COUNT, translation4::static_table_translate);
 
 		test_translation_set<translation4::index, translation4::translated>(
-			File, "array table    ", IterationCount, TotalCount, translation4::INDEX_COUNT, translation4::array_table_translate);
-
-		test_translation_set<translation4::index, translation4::translated>(
-			File, "dynamic table  ", IterationCount, TotalCount, translation4::INDEX_COUNT, translation4::dynamic_table_translate);
-
-		test_translation_set<translation4::index, translation4::translated>(
 			File, "index switch   ", IterationCount, TotalCount, translation4::INDEX_COUNT, translation4::index_switch_translate);
 
 		test_translation_set<translation4::translated, translation4::index>(
 			File, "value switch   ", IterationCount, TotalCount, translation4::TRANSLATED_COUNT, translation4::value_switch_translate);
 
 		// 8 enum values
-		char const * Title8 = "8, uniform (ms), linear (ms), random (ms)";
+		char const * Title8 = "8; uniform (ms); linear (ms); random (ms)";
 		std::printf("%s\n", Title8);
 		std::fprintf(File, "%s\n", Title8);
 
@@ -2695,19 +2000,13 @@ void test_translation_table()
 			File, "static table   ", IterationCount, TotalCount, translation8::INDEX_COUNT, translation8::static_table_translate);
 
 		test_translation_set<translation8::index, translation8::translated>(
-			File, "array table    ", IterationCount, TotalCount, translation8::INDEX_COUNT, translation8::array_table_translate);
-
-		test_translation_set<translation8::index, translation8::translated>(
-			File, "dynamic table  ", IterationCount, TotalCount, translation8::INDEX_COUNT, translation8::dynamic_table_translate);
-
-		test_translation_set<translation8::index, translation8::translated>(
 			File, "index switch   ", IterationCount, TotalCount, translation8::INDEX_COUNT, translation8::index_switch_translate);
 
 		test_translation_set<translation8::translated, translation8::index>(
 			File, "value switch   ", IterationCount, TotalCount, translation8::TRANSLATED_COUNT, translation8::value_switch_translate);
 
 		// 16 enum values
-		char const * Title16 = "16, uniform (ms), linear (ms), random (ms)";
+		char const * Title16 = "16; uniform (ms); linear (ms); random (ms)";
 		std::printf("%s\n", Title16);
 		std::fprintf(File, "%s\n", Title16);
 
@@ -2718,19 +2017,13 @@ void test_translation_table()
 			File, "static table  ", IterationCount, TotalCount, translation16::INDEX_COUNT, translation16::static_table_translate);
 
 		test_translation_set<translation16::index, translation16::translated>(
-			File, "array table   ", IterationCount, TotalCount, translation16::INDEX_COUNT, translation16::array_table_translate);
-
-		test_translation_set<translation16::index, translation16::translated>(
-			File, "dynamic table ", IterationCount, TotalCount, translation16::INDEX_COUNT, translation16::dynamic_table_translate);
-
-		test_translation_set<translation16::index, translation16::translated>(
 			File, "index switch  ", IterationCount, TotalCount, translation16::INDEX_COUNT, translation16::index_switch_translate);
 
 		test_translation_set<translation16::translated, translation16::index>(
 			File, "value switch  ", IterationCount, TotalCount, translation16::TRANSLATED_COUNT, translation16::value_switch_translate);
 
 		// 32 enum values
-		char const * Title32 = "32, uniform (ms), linear (ms), random (ms)";
+		char const * Title32 = "32; uniform (ms); linear (ms); random (ms)";
 		std::printf("%s\n", Title32);
 		std::fprintf(File, "%s\n", Title32);
 
@@ -2741,19 +2034,13 @@ void test_translation_table()
 			File, "static table  ", IterationCount, TotalCount, translation32::INDEX_COUNT, translation32::static_table_translate);
 
 		test_translation_set<translation32::index, translation32::translated>(
-			File, "array table   ", IterationCount, TotalCount, translation32::INDEX_COUNT, translation32::array_table_translate);
-
-		test_translation_set<translation32::index, translation32::translated>(
-			File, "dynamic table ", IterationCount, TotalCount, translation32::INDEX_COUNT, translation32::dynamic_table_translate);
-
-		test_translation_set<translation32::index, translation32::translated>(
 			File, "index switch  ", IterationCount, TotalCount, translation32::INDEX_COUNT, translation32::index_switch_translate);
 
 		test_translation_set<translation32::translated, translation32::index>(
 			File, "value switch  ", IterationCount, TotalCount, translation32::TRANSLATED_COUNT, translation32::value_switch_translate);
 
 		// 64 enum values
-		char const * Title64 = "64, uniform (ms), linear (ms), random (ms)";
+		char const * Title64 = "64; uniform (ms); linear (ms); random (ms)";
 		std::printf("%s\n", Title64);
 		std::fprintf(File, "%s\n", Title64);
 
@@ -2764,19 +2051,13 @@ void test_translation_table()
 			File, "static table  ", IterationCount, TotalCount, translation64::INDEX_COUNT, translation64::static_table_translate);
 
 		test_translation_set<translation64::index, translation64::translated>(
-			File, "array table   ", IterationCount, TotalCount, translation64::INDEX_COUNT, translation64::array_table_translate);
-
-		test_translation_set<translation64::index, translation64::translated>(
-			File, "dynamic table ", IterationCount, TotalCount, translation64::INDEX_COUNT, translation64::dynamic_table_translate);
-
-		test_translation_set<translation64::index, translation64::translated>(
 			File, "index switch  ", IterationCount, TotalCount, translation64::INDEX_COUNT, translation64::index_switch_translate);
 
 		test_translation_set<translation64::translated, translation64::index>(
 			File, "value switch  ", IterationCount, TotalCount, translation64::TRANSLATED_COUNT, translation64::value_switch_translate);
 
 		// 128 enum values
-		char const * Title128 = "128, uniform (ms), linear (ms), random (ms)";
+		char const * Title128 = "128; uniform (ms); linear (ms); random (ms)";
 		std::printf("%s\n", Title128);
 		std::fprintf(File, "%s\n", Title128);
 
@@ -2785,12 +2066,6 @@ void test_translation_table()
 
 		test_translation_set<translation128::index, translation128::translated>(
 			File, "static table  ", IterationCount, TotalCount, translation128::INDEX_COUNT, translation128::static_table_translate);
-
-		test_translation_set<translation128::index, translation128::translated>(
-			File, "array table   ", IterationCount, TotalCount, translation128::INDEX_COUNT, translation128::array_table_translate);
-
-		test_translation_set<translation128::index, translation128::translated>(
-			File, "dynamic table ", IterationCount, TotalCount, translation128::INDEX_COUNT, translation128::dynamic_table_translate);
 
 		test_translation_set<translation128::index, translation128::translated>(
 			File, "index switch  ", IterationCount, TotalCount, translation128::INDEX_COUNT, translation128::index_switch_translate);
