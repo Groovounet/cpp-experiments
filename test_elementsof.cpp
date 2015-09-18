@@ -4,6 +4,9 @@
 
 //https://msdn.microsoft.com/en-us/library/ms175773.aspx
 
+#define ENABLE 0
+#if ENABLE
+
 template <typename T>
 constexpr std::size_t countofA(T & a)
 {
@@ -54,3 +57,11 @@ void test_countof()
 	//std::size_t const C = _countof(ShaderStage);
 	//std::size_t const D = _countof(pointer);
 }
+
+#else
+
+void test_countof()
+{
+}
+
+#endif

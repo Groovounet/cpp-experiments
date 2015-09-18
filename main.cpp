@@ -1,4 +1,5 @@
 #include "test_sorting.hpp"
+#include "test_default_virtual.hpp"
 #include "test_template_template.hpp"
 #include "test_function_template_parameter.hpp"
 #include "test_overload_return_param.hpp"
@@ -8,9 +9,10 @@
 
 int main()
 {
-	test_translation_table();
+	test_default_virtual();
 
 /*
+	test_translation_table();
 	test_sorting();
 
 	test_template_template();
